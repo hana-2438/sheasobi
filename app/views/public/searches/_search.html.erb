@@ -1,0 +1,11 @@
+<div class="container">
+  <span></span>
+  <form class="d-flex mt-3">
+    <%= form_with url: search_path, method: :get, local: true do |f| %>
+      <%= f.text_field :word, class: "form-control me-2", placeholder: "Search" %>
+      <%= button_tag type: "submit", class: "btn btn-outline-secondary text-white" do %>
+        <i class="fas fa-search"></i>
+      <% end %>
+    <% end %>
+  </form>
+</div>

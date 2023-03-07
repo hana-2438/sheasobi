@@ -8,6 +8,15 @@
 /*application.html----------------------------------*/
 
 
+/*public/homes/top.html-----------------------------*/
+.main-visual{
+  height: 400px;
+  width: 600px;
+  background-image: url("../../assets/images/top.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 
 /*admin/sessions/new.html------------------------*/
 .login_title{

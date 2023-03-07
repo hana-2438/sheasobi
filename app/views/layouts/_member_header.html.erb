@@ -10,11 +10,14 @@
         <div class="navbar">
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto">
-              <li><%= link_to "マイページへ", member_path, class: "btn btn-outline-secondary ml-1 mr-3" %></li>
+              <li><%= link_to "マイページへ", member_path(current_member.id), class: "btn btn-outline-secondary ml-1 mr-3" %></li>
               <li><%= link_to "お出かけスポットを探す", posts_path, class: "btn btn-outline-secondary mr-3" %></li>
               <li><%= link_to "お出かけスポットを投稿する", new_post_path, class: "btn btn-outline-secondary ml-1 mr-3" %></li>
               <li><%= link_to "ログアウト", destroy_member_session_path, method: :delete, class: "btn btn-outline-secondary ml-1 mr-3" %></li>
             </ul>
+            </div>
+              <%= render 'public/searches/search' %>
+            </div>
           </div>
         </div>
     </div>

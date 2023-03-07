@@ -11,10 +11,12 @@ devise_for :members, skip: [:passwords], controllers: {
   registrations: "public/registrations",
   sessions: 'public/sessions'
 }
+  devise_scope :member do
+    post 'guest_sign_in', to: 'public/sessions#guest_sign_in'
+  end
 
- devise_scope :public do
-    post 'members/guest_sign_in', to: 'public/sessions#guest_sign_in'
- end
+
+
 
 
   namespace :admin do
@@ -31,7 +33,7 @@ devise_for :members, skip: [:passwords], controllers: {
       member do
        get 'favorites'
       end
-     
+
     end
     get 'members/confirm' => 'members#confirm',as:'members_confirm'
     patch 'members/:id/withdraw' => 'members#withdraw', as: 'members_withdraw'
