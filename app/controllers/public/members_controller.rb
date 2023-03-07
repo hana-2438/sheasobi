@@ -4,8 +4,14 @@ class Public::MembersController < ApplicationController
 
   def edit
   end
+  
+  def update
+  end
 
   def confirm
+  end
+  
+  def withdraw
   end
 
   def favorites
