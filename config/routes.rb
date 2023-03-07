@@ -19,8 +19,7 @@ devise_for :members, skip: [:passwords], controllers: {
 
   namespace :admin do
     get '/' => 'homes#top'
-    resources :members, only: [:index,:destroy]
-    get 'members/confirm' => 'members#confirm',as:'members_confirm'
+    resources :members, only: [:index,:edit,:update]
   end
 
   scope module: :public do
@@ -32,8 +31,10 @@ devise_for :members, skip: [:passwords], controllers: {
       member do
        get 'favorites'
       end
+     
     end
     get 'members/confirm' => 'members#confirm',as:'members_confirm'
+    patch 'members/:id/withdraw' => 'members#withdraw', as: 'members_withdraw'
 
     resources :posts, only: [:new,:create,:show,:edit,:update,:index,:destroy] do
       resources :post_comments, only: [:create]
