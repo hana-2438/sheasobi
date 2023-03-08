@@ -12,7 +12,7 @@
         <div class="form_group row mt-4 justify-content-center align-items-center">
           <label class="col-sm-3 col-form-label">ニックネーム</label>
           <div>
-            <%= f.text_field :name, autofocus: true, autocomplete: "email", placeholder: 'えひめ太郎', class: "form_controll" %>
+            <%= f.text_field :name, autofocus: true, autocomplete: "name", placeholder: 'えひめ太郎', class: "form_controll" %>
           </div>
         </div>
 
@@ -38,7 +38,7 @@
         </div>
 
         <div class="text-center mt-5">
-          <%= f.submit "新規登録", class:"btn btn-primary btn-lg" %>
+          <%= f.submit "新規登録", class:"btn btn-salmon btn-lg" %>
         </div>
       <% end %>
        <div class="row mt-5 justify-content-center">

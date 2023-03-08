@@ -26,6 +26,7 @@ devise_for :members, skip: [:passwords], controllers: {
 
   scope module: :public do
     root to: "homes#top"
+    get 'members/confirm' => 'members#confirm',as:'members_confirm'
     resources :members, only: [:show,:edit,:update,:destroy] do
       resource :relationships, only: [:create, :destroy]
       get 'followings' => 'relationships#followings', as: 'followings'
@@ -35,7 +36,7 @@ devise_for :members, skip: [:passwords], controllers: {
       end
 
     end
-    get 'members/confirm' => 'members#confirm',as:'members_confirm'
+
     patch 'members/:id/withdraw' => 'members#withdraw', as: 'members_withdraw'
 
     resources :posts, only: [:new,:create,:show,:edit,:update,:index,:destroy] do
