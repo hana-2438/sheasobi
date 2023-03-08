@@ -13,8 +13,11 @@
               <li><%= link_to "お出かけスポットを探す", posts_path, class: "btn btn-outline-secondary mr-3" %></li>
               <li><%= link_to "新規登録", new_member_registration_path, class: "btn btn-outline-secondary ml-1 mr-3" %></li>
               <li><%= link_to "ログイン", new_member_session_path, class: "btn btn-outline-secondary ml-1 mr-3" %></li>
-              <li><%= link_to "ゲストログイン", members_guest_sign_in_path, class: "btn btn-outline-secondary ml-1 mr-3" %></li>
+              <li><%= link_to "ゲストログイン", guest_sign_in_path, class: "btn btn-outline-secondary ml-1 mr-3", method: :post %></li>
             </ul>
+            </div>
+              <%= render 'public/searches/search' %>
+            </div>
           </div>
         </div>
     </div>

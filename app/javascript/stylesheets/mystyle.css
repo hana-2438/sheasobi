@@ -7,9 +7,48 @@
 
 /*application.html----------------------------------*/
 
+/*登録ボタン等の色をサーモン色に変更-----------------*/
 
+.btn-salmon{
+  background-color: #fa8072;
+  color: white;
+}
+
+
+/*public/homes/top.html-----------------------------*/
+.main-visual{
+  height: 400px;
+  width: 600px;
+  background-image: url("../../assets/images/top.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+
+/*public/members/show.html*/
+.profile-content{
+  height: 500px;
+  width: 300px;
+}
+
+.heart_red{
+  color: red;
+}
+
+.profile-side{
+  padding-top: 80px;
+}
+
+
+/*public/members/edit.html*/
+
+/*.profile_image{*/
+/*  padding-left: 30px;*/
+/*}*/
 
 /*admin/sessions/new.html------------------------*/
 .login_title{
   text-align: center;
 }
+

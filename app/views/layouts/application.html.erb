@@ -6,7 +6,6 @@
       <meta name="viewport" content="width=device-width,initial-scale=1">
       <%= csrf_meta_tags %>
       <%= csp_meta_tag %>
-
       <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
       <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     </head>
@@ -21,13 +20,14 @@
       <% end %>
 
       <main>
+        <%= flash[:notice] %>
         <%= yield %>
       </main>
       <footer class="fixed-bottom py-3 bg-secondary" style="height: 60px;">
         <div>
             <div class="mt-2 mr-4  text-center">
          　  <span class="text-white">
-           　  © しぇあそび
+           　 © しぇあそび
             </span>
             </div>
         </div>
