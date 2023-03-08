@@ -43,9 +43,17 @@
 
 /*public/members/edit.html*/
 
-/*.profile_image{*/
-/*  padding-left: 30px;*/
-/*}*/
+.edit_form_group{
+  height: 500px;
+  width: 700px;
+}
+
+/*public/members/edit.html*/
+.confirm-btn{
+  height: 50px;
+  width: 200px;
+}
+
 
 /*admin/sessions/new.html------------------------*/
 .login_title{

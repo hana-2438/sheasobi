@@ -11,7 +11,7 @@ devise_for :members, skip: [:passwords], controllers: {
   registrations: "public/registrations",
   sessions: 'public/sessions'
 }
-  devise_scope :member do
+  devise_scope :members do
     post 'guest_sign_in', to: 'public/sessions#guest_sign_in'
   end
 

@@ -21,9 +21,14 @@ class Public::MembersController < ApplicationController
   end
 
   def confirm
+     @member = current_member.id
   end
 
   def withdraw
+    current_member.update(is_deleted: true)
+    reset_session
+    flash[:alert] = "退会しました。"
+    redirect_to root_path
   end
 
   def favorites
