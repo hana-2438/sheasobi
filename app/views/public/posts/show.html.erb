@@ -7,6 +7,7 @@
         <%= image_tag @post.get_image(150,150), class: "bd-placeholder-img card-img-top" %>
         <div class="card-body">
           <h5 class="card-title font-weight-bold "><%= @post.title %></h5>
+          <div class="tag-name"><p><%= @post.tag.name %></p></div>
           <h6 class="card-subtitle mb-2 text-muted">場所：　<%= @post.region.name%>　<%= @post.place%></h6>
           <p class="card-text"><%= @post.caption %></p>
           <a href="#" class="btn btn-primary">Go somewhere</a>

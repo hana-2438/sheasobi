@@ -6,6 +6,8 @@ class Post < ApplicationRecord
   belongs_to :region
 
   has_one_attached :image
+  
+  scope :is_not_deleted, -> { joins(:member).where(member: { is_deleted: false }) }
 
   def get_image(width, height)
     unless image.attached?

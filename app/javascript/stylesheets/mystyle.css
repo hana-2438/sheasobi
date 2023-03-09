@@ -55,6 +55,21 @@
 }
 
 
+/*public/posts/show.html*/
+.tag-name {
+    padding: 10px 15px;
+    margin: 10px 0;
+    color: #232323;
+    background: #fff8e8;
+    border-left: solid 10px #ffc06e;
+    width: 100px;
+}
+.tag-name p {
+    margin: 0;
+    padding: 0;
+}
+
+
 /*admin/sessions/new.html------------------------*/
 .login_title{
   text-align: center;

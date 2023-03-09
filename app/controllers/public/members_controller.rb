@@ -1,10 +1,12 @@
 class Public::MembersController < ApplicationController
   before_action :ensure_correct_member, only: [:edit, :update]
   before_action :ensure_guest_member, only: [:edit]
-  before_action :exclude_deleted_member, only: [:show]
-  
+
   def show
     @member = Member.find(params[:id])
+    if @member.is_deleted
+      redirect_to root_path
+    end
     # @posts = @member.posts←投稿機能実装後コメント外す
   end
 
@@ -55,10 +57,7 @@ class Public::MembersController < ApplicationController
       redirect_to member_path(current_member), notice:"ゲストユーザーはプロフィール編集画面へ遷移できません。"
     end
   end
-  
-  def exclude_deleted_member
-    # is_deletedがtrue（退会）のユーザーを除外する
-     @member = Member.where.not(is_deleted: true)
-  end
+
+
 end
 
