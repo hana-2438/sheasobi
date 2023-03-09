@@ -1,6 +1,8 @@
 class Public::MembersController < ApplicationController
   before_action :ensure_correct_member, only: [:edit, :update]
   before_action :ensure_guest_member, only: [:edit]
+  before_action :exclude_deleted_member, only: [:show]
+  
   def show
     @member = Member.find(params[:id])
     # @posts = @member.posts←投稿機能実装後コメント外す
@@ -41,17 +43,22 @@ class Public::MembersController < ApplicationController
   end
 
   def ensure_correct_member
-      @member = Member.find(params[:id])
-      unless @member == current_member
-        redirect_to member_path(current_user)
-      end
+    @member = Member.find(params[:id])
+    unless @member == current_member
+      redirect_to member_path(current_user)
     end
+  end
 
-    def ensure_guest_member
-      @member = Member.find(params[:id])
-      if @member.name == "guestmember"
-        redirect_to member_path(current_member), notice:"ゲストユーザーはプロフィール編集画面へ遷移できません。"
-      end
+  def ensure_guest_member
+    @member = Member.find(params[:id])
+    if @member.name == "guestmember"
+      redirect_to member_path(current_member), notice:"ゲストユーザーはプロフィール編集画面へ遷移できません。"
     end
+  end
+  
+  def exclude_deleted_member
+    # is_deletedがtrue（退会）のユーザーを除外する
+     @member = Member.where.not(is_deleted: true)
+  end
 end
 
