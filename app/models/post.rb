@@ -16,4 +16,8 @@ class Post < ApplicationRecord
     end
     image.variant(resize_to_fill: [width, height]).processed
   end
+  
+  def favorited_by?(member)
+    favorites.exists?(member_id: member.id)    
+  end
 end

@@ -60,13 +60,17 @@
     padding: 10px 15px;
     margin: 10px 0;
     color: #232323;
-    background: #fff8e8;
-    border-left: solid 10px #ffc06e;
-    width: 100px;
+    background: #ffe4e1;
+    border-left: solid 10px #ff8c00;
+    width: 200px;
 }
 .tag-name p {
     margin: 0;
     padding: 0;
+}
+
+.card-image{
+  height: 400px;
 }
 
 
