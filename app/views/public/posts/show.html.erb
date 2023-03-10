@@ -10,22 +10,26 @@
           <div class="tag-name"><p><%= @post.tag.name %></p></div>
           <h6 class="card-subtitle mb-2 text-muted">場所：　<%= @post.region.name%>　<%= @post.place%></h6>
           <p class="card-text"><%= @post.caption %></p>
-          <% if current_member.id == @post.member.id %>
-            <%= link_to "編集する", edit_post_path(@post), class: "card-link btn btn-secondary rounded-pill" %>
-            <%= link_to "削除する", post_path(@post), method: :delete, class: "card-link btn btn-danger rounded-pill" %>
+          <% if member_signed_in? %>
+            <% if current_member.id == @post.member.id %>
+              <%= link_to "編集する", edit_post_path(@post), class: "card-link btn btn-secondary rounded-pill" %>
+              <%= link_to "削除する", post_path(@post), method: :delete, class: "card-link btn btn-danger rounded-pill" %>
+            <% end %>
           <% end %>
-          <% if @post.favorited_by?(current_member) %>
-            <p class="text-right">
-              <%= link_to post_favorites_path(@post), method: :delete do %>
-                <i class="fas fa-heart fa-3x heart_red"></i><%= @post.favorites.count %>いいね
-              <% end %>
-            </p>
-          <% else %>
-            <p class="text-right">
-              <%= link_to post_favorites_path(@post), method: :post do %>
-                <i class="fas fa-heart fa-3x normal_heart"></i><%= @post.favorites.count %>いいね
-              <% end %>
-            </p>
+          <% if member_signed_in? %>
+            <% if @post.favorited_by?(current_member) %>
+              <p class="text-right">
+                <%= link_to post_favorites_path(@post), method: :delete do %>
+                  <i class="fas fa-heart fa-3x heart_red"></i><%= @post.favorites.count %>いいね
+                <% end %>
+              </p>
+            <% else %>
+              <p class="text-right">
+                <%= link_to post_favorites_path(@post), method: :post do %>
+                  <i class="fas fa-heart fa-3x normal_heart"></i><%= @post.favorites.count %>いいね
+                <% end %>
+              </p>
+            <% end %>
           <% end %>
         </div>
       </div>
