@@ -7,6 +7,24 @@
 
 /*application.html----------------------------------*/
 
+main{
+  min-height: 100vh;
+  position: relative;/*←相対位置*/
+  padding-bottom: 120px;/*←footerの高さ*/
+  box-sizing: border-box;/*←全て含めてmin-height:100vhに*/
+}
+
+footer{
+  width: 100%;
+  background-color: #89c7de;
+  color: #fff;
+  text-align: center;
+  padding: 30px 0;
+
+  position: absolute;/*←絶対位置*/
+  bottom: 0; /*下に固定*/
+}
+
 /*登録ボタン等の色をサーモン色に変更-----------------*/
 
 .btn-salmon{
@@ -32,6 +50,7 @@
   width: 300px;
 }
 
+  /*public/posts/show.htmlにも記述あり*/
 .heart_red{
   color: red;
 }
@@ -71,6 +90,12 @@
 
 .card-image{
   height: 400px;
+}
+
+.normal_heart{
+  color: #c0c0c0;
+  border-color: black;
+  height: 40px;
 }
 
 

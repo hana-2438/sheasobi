@@ -42,7 +42,7 @@ devise_for :members, skip: [:passwords], controllers: {
     patch 'members/:id/withdraw' => 'members#withdraw', as: 'members_withdraw'
 
     resources :posts, only: [:new,:create,:show,:edit,:update,:index,:destroy] do
-      resources :post_comments, only: [:create]
+      resources :post_comments, only: [:create,:destroy]
       resource :favorites, only: [:create,:destroy]
     end
     get '/searches' => 'searches#search', as:'search'

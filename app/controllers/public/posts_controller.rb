@@ -19,6 +19,7 @@ class Public::PostsController < ApplicationController
     if @post.member.is_deleted
       redirect_to root_path
     end
+    @post_comment = PostComment.new
   end
 
   def destroy
@@ -29,10 +30,20 @@ class Public::PostsController < ApplicationController
   end
 
   def edit
+    @post = Post.find(params[:id])
+  end
+
+  def update
+    @post = Post.find(params[:id])
+    if @post.update(post_params)
+      redirect_to post_path(@post)
+    else
+      render :edit
+    end
   end
 
   def index
-    
+    # modelに退会ユーザーを除外するメソッドを記述している
     @posts = Post.is_not_deleted
   end
 

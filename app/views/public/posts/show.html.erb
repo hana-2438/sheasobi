@@ -1,8 +1,8 @@
 <div class="container">
   <div class="row">
 
-    <div class="col-md-6 mt-4">
-      <div class="card bg-light">
+    <div class="col-md-8 mt-4">
+      <div class="card bg-light shadow">
         <h5 class="card-header"><%= @post.created_at.strftime('%Y/%m/%d')%> | 投稿者：<%= @post.member.name%></h5>
         <%= image_tag @post.get_image(400,400), class: "bd-placeholder-img card-img-top card-image" %>
         <div class="card-body">
@@ -15,20 +15,41 @@
             <%= link_to "削除する", post_path(@post), method: :delete, class: "card-link btn btn-danger rounded-pill" %>
           <% end %>
           <% if @post.favorited_by?(current_member) %>
-            <p>
-              <%= link_to, post_favorites_path(@post), method: :delete do %>
-
+            <p class="text-right">
+              <%= link_to post_favorites_path(@post), method: :delete do %>
+                <i class="fas fa-heart fa-3x heart_red"></i><%= @post.favorites.count %>いいね
+              <% end %>
             </p>
-
-        </div>
-        <div class="card-footer">
-          <small class="text-muted">Last updated 3 mins ago</small>
+          <% else %>
+            <p class="text-right">
+              <%= link_to post_favorites_path(@post), method: :post do %>
+                <i class="fas fa-heart fa-3x normal_heart"></i><%= @post.favorites.count %>いいね
+              <% end %>
+            </p>
+          <% end %>
         </div>
       </div>
     </div>
 
-    <div class="col-md-6">
-
+    <div class="col-md-4 mt-4">
+      <div class="row justify-content-center">コメント件数：<%= @post.post_comments.count %></div>
+      <div class="bg-light shadow overflow-auto">
+        <% @post.post_comments.each do |post_comment| %>
+        <div class="ml-4">
+          <p><%= image_tag post_comment.member.get_profile_image(30,30), class: "rounded-circle img-thumbnail border-secondary mt-4" %></p>
+          <%= post_comment.member.name %> |
+          <%= post_comment.created_at.strftime('%Y/%m/%d') %><br>
+          <%= post_comment.comment %>
+          <%= link_to "削除", post_post_comment_path(post_comment.post,post_comment), method: :delete, class:"btn btn-danger btn-sm" %>
+        </div>
+        <% end %>
+      </div>
+      <div>
+        <%= form_with model: [@post, @post_comment] do |f| %>
+          <%= f.text_area :comment, placeholder: "コメントをここに", class: 'form-control' %>
+          <%= f.submit "送信する", class:"btn btn-secondary mt-1" %>
+        <% end %>
+      </div>
     </div>
 
   </div>
