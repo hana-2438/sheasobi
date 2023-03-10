@@ -7,7 +7,8 @@ class Public::MembersController < ApplicationController
     if @member.is_deleted
       redirect_to root_path
     end
-    # @posts = @member.posts←投稿機能実装後コメント外す
+    @posts = @member.posts.page(params[:page]).per(3)
+
   end
 
   def edit

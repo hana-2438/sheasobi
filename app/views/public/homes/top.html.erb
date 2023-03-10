@@ -12,14 +12,35 @@
     </div>
     <div class="col-lg-3 bg-secondary">タグ検索</div>
   </div>
-  <div class="row bg-primary">
-    新着投稿
+
+  <div class="row">
+    <h3>新着投稿</h3>
   </div>
   <div class="row">
-    <div class="col bg-dark text-white">1</div>
-    <div class="col bg-dark text-white">2</div>
-    <div class="col bg-dark text-white">3</div>
-    <div class="col bg-dark text-white">4</div>
+    <div class="col-md-10">
+      <div class="row row-cols-1 row-cols-md-4">
+         <% @posts.first(4).each do |post| %>
+            <div class="col mb-3">
+              <div class="card h-100">
+
+                <div class="card-header">
+                  <p class="card-header small"><%= post.created_at.strftime('%Y/%m/%d')%><br>投稿者：<%= post.member.name%></p>
+                  <%= link_to post_path(post) do %>
+                  <%= image_tag post.get_image(20,20), class: "bd-placeholder-img card-img-top" %>
+                  <% end %>
+                </div>
+
+                <div class="card-body">
+                  <p class="card-title font-weight-bold small"><%= post.title %></p>
+                  <div class="tag-name small", style="width: 100px; height: 30px; "><p style="font-size: 10px;"><%= post.tag.name %></p></div>
+                  <p class="card-subtitle mb-2 text-muted small">場所：　<%= post.region.name%>　<%= post.place%></p>
+                </div>
+
+              </div>
+            </div>
+         <% end %>
+      </div>
+    </div>
   </div>
-  <div class="row"><%= link_to "もっと見る", posts_path %></div>
+  <div class="text-right"><%= link_to "もっと見る", posts_path %></div>
 </div>

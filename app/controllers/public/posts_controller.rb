@@ -44,7 +44,7 @@ class Public::PostsController < ApplicationController
 
   def index
     # modelに退会ユーザーを除外するメソッドを記述している
-    @posts = Post.is_not_deleted
+    @posts = Post.is_not_deleted.page(params[:page]).per(6)
   end
 
 private
