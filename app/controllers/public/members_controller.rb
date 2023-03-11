@@ -53,7 +53,7 @@ class Public::MembersController < ApplicationController
   def ensure_correct_member
     @member = Member.find(params[:id])
     unless @member == current_member
-      redirect_to member_path(current_user)
+      redirect_to member_path(current_member)
     end
   end
 
