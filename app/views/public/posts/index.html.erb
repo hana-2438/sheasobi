@@ -3,15 +3,9 @@
   <%= flash[:notice] %>
 
   <div class="row">
-    <div class="col-md-10">
+    <div class="col-md-12">
         <div class="row row-cols-1 row-cols-md-3">
           <%= render "index", posts: @posts %>
-          
-        </div>
-
-        <div class="col-md-2">
-          <div class="col tag_search">
-          </div>
         </div>
         <div>
           <%= paginate @posts %>

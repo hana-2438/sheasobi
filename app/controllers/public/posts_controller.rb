@@ -19,6 +19,7 @@ class Public::PostsController < ApplicationController
     if @post.member.is_deleted
       redirect_to root_path
     end
+    @member = @post.member.id
     @post_comment = PostComment.new
   end
 

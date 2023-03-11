@@ -37,6 +37,11 @@ class Public::MembersController < ApplicationController
   end
 
   def favorites
+    @member = Member.find(params[:id])
+    # ユーザーがいいねしたすべての投稿のidを取得
+    favorites= Favorite.where(member_id: @member.id).pluck(:post_id)
+    # 投稿の中からユーザーがいいねした投稿を取得してくる
+    @favorite_posts = Kaminari.paginate_array(Post.find(favorites)).page(params[:page]).per(6)
   end
 
   private

@@ -17,7 +17,7 @@
     <h3>新着投稿</h3>
   </div>
   <div class="row">
-    <div class="col-md-10">
+    <div class="col-md-12">
       <div class="row row-cols-1 row-cols-md-4">
          <% @posts.first(4).each do |post| %>
             <div class="col mb-3">
@@ -26,7 +26,7 @@
                 <div class="card-header">
                   <p class="card-header small"><%= post.created_at.strftime('%Y/%m/%d')%><br>投稿者：<%= post.member.name%></p>
                   <%= link_to post_path(post) do %>
-                  <%= image_tag post.get_image(20,20), class: "bd-placeholder-img card-img-top" %>
+                  <%= image_tag post.get_image(200,200), class: "bd-placeholder-img card-img-top" %>
                   <% end %>
                 </div>
 

@@ -21,7 +21,13 @@
               <td><%= image_tag member.get_profile_image(50,50), class: "bd-placeholder-img card-img-top" %></td>
               <td><%= member.name %></td>
               <td><%= member.email %></td>
-              <td><%= member.is_deleted %></td>
+              <td>
+                <% if member.is_deleted == false %>
+                  <span class="text-success">有効</span>
+                <% elsif %>
+                  <span class="text-danger">退会</span>
+                <% end %>
+              </td>
               <td><%= link_to "編集する", edit_admin_member_path(member), class: "btn btn-success" %></td>
             </tr>
           <% end %>

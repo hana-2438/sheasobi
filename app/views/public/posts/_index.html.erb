@@ -1,16 +1,16 @@
            <% posts.each do |post| %>
             <div class="col mb-3">
-              <div class="card h-100">
+              <div class="card h-100 shadow">
 
                 <div class="card-header">
                   <p class="card-header small"><%= post.created_at.strftime('%Y/%m/%d')%><br>投稿者：<%= post.member.name%></p>
                     <% if current_page?(controller: 'posts', action: 'index' ) %>
                        <%= link_to post_path(post.id) do %>
-                          <%= image_tag post.get_image(50,50), class: "bd-placeholder-img card-img-top" %>
+                          <%= image_tag post.get_image(300,300), class: "bd-placeholder-img card-img-top" %>
                        <% end %>
                     <% else %>
                        <%= link_to post_path(post) do %>
-                          <%= image_tag post.get_image(50,50), class: "bd-placeholder-img card-img-top" %>
+                          <%= image_tag post.get_image(300,300), class: "bd-placeholder-img card-img-top" %>
                        <% end %>
                     <% end %>
                 </div>

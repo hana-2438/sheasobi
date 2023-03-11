@@ -16,17 +16,27 @@
         <% else %>
           <!--ふぉろーに関する記述はフォロー機能実装時に詳しく記述-->
           <% if current_member.following?(Member.find(params[:id])) %>
-            <%= link_to "フォロー中",  member_relationships_path(params[:id]), method: :delete %>
+            <%= link_to "フォロー中",  member_relationships_path(params[:id]), method: :delete, class: "btn btn-salmon rounded-pill" %>
           <% else %>
-            <%= link_to "フォローする", member_relationships_path(params[:id]), method: :post %>
+            <%= link_to "フォローする", member_relationships_path(params[:id]), method: :post, class: "btn btn-green rounded-pill" %>
           <% end %>
         <% end %>
       <% end %>
     </div>
 
     <div class="col-lg-4 mt-4 profile-side">
-      <div class="col-lg-12 h4 mb-4">フォロー</div>
-      <div class="col-lg-12 h4 mb-4">フォロワー</div>
+      <div class="col-lg-12 h4 mb-4">
+        フォロー：
+        <%= link_to member_followings_path(@member) do %>
+          <%= @member.followings.count %>
+        <% end %>
+      </div>
+      <div class="col-lg-12 h4 mb-4">
+        フォロワー：
+         <%= link_to member_followers_path(@member) do %>
+           <%= @member.followers.count %>
+         <% end %>
+      </div>
       <div class="col-lg-12 mt-5">
         <% if member_signed_in? && current_member.id == params[:id].to_i %>
           <%= link_to favorites_member_path(@member), class: "btn btn-salmon btn-lg rounded-pill" do %>

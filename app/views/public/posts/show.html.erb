@@ -3,7 +3,12 @@
 
     <div class="col-md-8 mt-4">
       <div class="card bg-light shadow">
-        <h5 class="card-header"><%= @post.created_at.strftime('%Y/%m/%d')%> | 投稿者：<%= @post.member.name%></h5>
+        <h5 class="card-header">
+          <%= @post.created_at.strftime('%Y/%m/%d')%> | 投稿者：
+          <%= link_to member_path(@member) do %>
+            <%= @post.member.name%>
+          <% end %>
+        </h5>
         <%= image_tag @post.get_image(400,400), class: "bd-placeholder-img card-img-top card-image" %>
         <div class="card-body">
           <h5 class="card-title font-weight-bold "><%= @post.title %></h5>
@@ -39,7 +44,7 @@
       <div class="row justify-content-center">コメント件数：<%= @post.post_comments.count %></div>
       <div class="bg-light shadow overflow-auto">
         <% @post.post_comments.each do |post_comment| %>
-        <div class="ml-4">
+        <div class="ml-4 pb-4">
           <p><%= image_tag post_comment.member.get_profile_image(30,30), class: "rounded-circle img-thumbnail border-secondary mt-4" %></p>
           <%= post_comment.member.name %> |
           <%= post_comment.created_at.strftime('%Y/%m/%d') %><br>
@@ -48,7 +53,7 @@
         </div>
         <% end %>
       </div>
-      <div>
+      <div class="mt-4">
         <%= form_with model: [@post, @post_comment] do |f| %>
           <%= f.text_area :comment, placeholder: "コメントをここに", class: 'form-control' %>
           <%= f.submit "送信する", class:"btn btn-secondary mt-1" %>
