@@ -1,2 +1,18 @@
-<h1>Public::Members#favorites</h1>
-<p>Find me in app/views/public/members/favorites.html.erb</p>
+<div class="container">
+  <h2 class="mt-4 mb-4 text-center"><i class="fas fa-heart heart_red"></i>いいね</h2>
+  <%= flash[:notice] %>
+
+  <div class="row">
+    <div class="col-md-12">
+        <div class="row row-cols-1 row-cols-md-3">
+          <%= render "public/posts/index", posts: @favorite_posts %>
+        </div>
+        <div>
+          <%= paginate @favorite_posts %>
+        </div>
+    </div>
+  </div>
+</div>
+
+
+

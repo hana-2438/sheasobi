@@ -7,10 +7,43 @@
 
 /*application.html----------------------------------*/
 
+main{
+  min-height: 100vh;
+  position: relative;/*←相対位置*/
+  padding-bottom: 120px;/*←footerの高さ*/
+  box-sizing: border-box;/*←全て含めてmin-height:100vhに*/
+}
+
+body{
+  background-color: #ffeff7;
+}
+
+header{
+  background-color:#ffeff7;
+}
+
+footer{
+  width: 100%;
+  background-color: #89c7de;
+  color: #fff;
+  text-align: center;
+  padding: 30px 0;
+
+  position: absolute;/*←絶対位置*/
+  bottom: 0; /*下に固定*/
+}
+
 /*登録ボタン等の色をサーモン色に変更-----------------*/
 
 .btn-salmon{
   background-color: #fa8072;
+  color: white;
+}
+
+/*登録ボタン等の色を緑色に変更-----------------*/
+
+.btn-green{
+  background-color: #2e8b57;
   color: white;
 }
 
@@ -32,6 +65,7 @@
   width: 300px;
 }
 
+  /*public/posts/show.htmlにも記述あり*/
 .heart_red{
   color: red;
 }
@@ -54,6 +88,39 @@
   width: 200px;
 }
 
+
+/*public/posts/show.html*/
+.tag-name {
+    padding: 10px 15px;
+    margin: 10px 0;
+    color: #232323;
+    background: #fffacd;
+    border-left: solid 10px #ff8c00;
+    width: 200px;
+}
+.tag-name p {
+    margin: 0;
+    padding: 0;
+}
+
+/*.card-image{*/
+/*  height: 400px;*/
+/*}*/
+
+.normal_heart{
+  color: #c0c0c0;
+  border-color: black;
+  height: 40px;
+}
+
+
+
+/*application/_tag_search.html.erb----------------*/
+.tag_search{
+  width: 300px;
+  height: 600px;
+  color: black;
+}
 
 /*admin/sessions/new.html------------------------*/
 .login_title{

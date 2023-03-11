@@ -8,56 +8,12 @@
 
   <div class="row">
     <div class="col-md-8 mx-auto">
-       <%= form_with model: @member, url: member_path, method: :patch do |f| %>
-
-       <div class="form-group">
-         <div class="row">
-           <div class="col-md-3">
-               <%= f.label :name, 'ニックネーム' %>
-           </div>
-           <div class="col-md-9">
-               <%= f.text_field :name, class: 'form-control' %>
-           </div>
-         </div>
-       </div>
-
-       <div class="form-group">
-         <div class="row">
-           <div class="col-md-3">
-               <%= f.label :email, 'メールアドレス' %>
-           </div>
-           <div class="col-md-9">
-               <%= f.email_field :email, class: 'form-control' %>
-           </div>
-         </div>
-       </div>
-
-        <div class="form-group">
-         <div class="row">
-           <div class="col-md-3">
-               <%= f.label :profile_image, 'プロフィール画像' %>
-           </div>
-           <div class="col-md-9">
-               <%= f.file_field :profile_image, accept: "image/*" %>
-           </div>
-         </div>
-       </div>
-
-       <div class="form-group">
-         <div class="row">
-           <div class="col-md-3">
-               <%= f.label :introduction, 'プロフィール文' %>
-           </div>
-           <div class="col-md-9">
-               <%= f.text_area :introduction, rows: "5", autofocus: true, class: "form-control" %>
-           </div>
-         </div>
-       </div>
-
+      <%= form_with model: @member, url: member_path, method: :patch do |f| %>
+       <%= render "edit", member: @member, f: f %>
         <div class="text-center mt-5">
             <%= f.submit "保存する", class:"btn btn-salmon btn-lg" %>
         </div>
-       <% end %>
+      <% end %>
        <div class="row mt-5 justify-content-center">
           <h5 class="bg-white pl-3 pr-3">退会したい方は<%= link_to "こちら", members_confirm_path %>へ</h5>
        </div>

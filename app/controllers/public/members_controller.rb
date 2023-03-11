@@ -1,11 +1,14 @@
 class Public::MembersController < ApplicationController
   before_action :ensure_correct_member, only: [:edit, :update]
   before_action :ensure_guest_member, only: [:edit]
-  before_action :exclude_deleted_member, only: [:show]
-  
+
   def show
     @member = Member.find(params[:id])
-    # @posts = @member.posts←投稿機能実装後コメント外す
+    if @member.is_deleted
+      redirect_to root_path
+    end
+    @posts = @member.posts.page(params[:page]).per(3)
+
   end
 
   def edit
@@ -34,6 +37,11 @@ class Public::MembersController < ApplicationController
   end
 
   def favorites
+    @member = Member.find(params[:id])
+    # ユーザーがいいねしたすべての投稿のidを取得
+    favorites= Favorite.where(member_id: @member.id).pluck(:post_id)
+    # 投稿の中からユーザーがいいねした投稿を取得してくる
+    @favorite_posts = Kaminari.paginate_array(Post.find(favorites)).page(params[:page]).per(6)
   end
 
   private
@@ -55,10 +63,7 @@ class Public::MembersController < ApplicationController
       redirect_to member_path(current_member), notice:"ゲストユーザーはプロフィール編集画面へ遷移できません。"
     end
   end
-  
-  def exclude_deleted_member
-    # is_deletedがtrue（退会）のユーザーを除外する
-     @member = Member.where.not(is_deleted: true)
-  end
+
+
 end
 

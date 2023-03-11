@@ -42,7 +42,7 @@ class Member < ApplicationRecord
   end
 
   # フォローを外す時
-  def unfollow(user_id)
+  def unfollow(member_id)
     relationships.find_by(followed_id: member_id).destroy
   end
 
