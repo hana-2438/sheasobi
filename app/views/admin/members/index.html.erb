@@ -3,36 +3,7 @@
   <div class="row mt-3">
     <div class="col-md-12 mx-auto">
       <label class="h4 pr-3 pl-3">会員一覧</label>
-      <table class="table table-secondary table-striped mt-3">
-        <thead>
-          <tr class="text-center">
-            <th scope="col" style="width: auto">会員ID</th>
-            <th scope="col" style="width: auto"></th>
-            <th scope="col" style="width: auto%">ニックネーム</th>
-            <th scope="col" style="width: auto">メールアドレス</th>
-            <th scope="col" style="width: auto">会員ステータス</th>
-            <th scope="col" style="width: auto"></th>
-          </tr>
-        </thead>
-        <tbody class="table-light">
-          <% @members.each do |member| %>
-            <tr class="text-center">
-              <td><%= member.id %></td>
-              <td><%= image_tag member.get_profile_image(50,50), class: "bd-placeholder-img card-img-top" %></td>
-              <td><%= member.name %></td>
-              <td><%= member.email %></td>
-              <td>
-                <% if member.is_deleted == false %>
-                  <span class="text-success">有効</span>
-                <% elsif %>
-                  <span class="text-danger">退会</span>
-                <% end %>
-              </td>
-              <td><%= link_to "編集する", edit_admin_member_path(member), class: "btn btn-success" %></td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
+       <%= render "index", members: @members %>
       <div>
         <%= paginate(@members) %>
       </div>

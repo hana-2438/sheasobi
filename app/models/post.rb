@@ -20,4 +20,8 @@ class Post < ApplicationRecord
   def favorited_by?(member)
     favorites.exists?(member_id: member.id)
   end
+  
+  def self.looks(word)
+    @post = Post.where(["title LIKE? OR place LIKE?","%#{word}%","%#{word}%"])
+  end
 end
