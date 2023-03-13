@@ -51,4 +51,8 @@ class Member < ApplicationRecord
     followings.include?(member)
   end
 
+  def self.looks(word)
+    @member = Member.where("name LIKE?","%#{word}%")
+  end
+
 end

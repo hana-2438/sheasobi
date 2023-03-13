@@ -1,2 +1,10 @@
-<h1>Public::Relationships#followings</h1>
-<p>Find me in app/views/public/relationships/followings.html.erb</p>
+<div class="container">
+  <h2 class="mt-4 mmb-4"><%= @member.name %>さんがフォローしているユーザー</h2>
+  <%= flash[:notice] %>
+
+  <div class="row mt-4">
+    <div class="col-md-12">
+      <%= render "index", members: @members, member: @member %>
+    </div>
+  </div>
+</div>

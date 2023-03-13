@@ -7,6 +7,7 @@ class Post < ApplicationRecord
 
   has_one_attached :image
 
+  # joinsでmemberを結合し、whereで退会ユーザーを除外したすべてのユーザーを取得。is_not_deletedに格納。
   scope :is_not_deleted, -> { joins(:member).where(member: { is_deleted: false }) }
 
   def get_image(width, height)
@@ -19,5 +20,9 @@ class Post < ApplicationRecord
 
   def favorited_by?(member)
     favorites.exists?(member_id: member.id)
+  end
+  
+  def self.looks(word)
+    @post = Post.where(["title LIKE? OR place LIKE?","%#{word}%","%#{word}%"])
   end
 end
