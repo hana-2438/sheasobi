@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
-     <%= flash[:notice] %>
     <div class="col-md-8 mt-4">
+       <%= flash[:notice] %>
       <div class="card bg-light shadow">
         <h5 class="card-header">
           <%= @post.created_at.strftime('%Y/%m/%d')%> | 投稿者：
@@ -18,7 +18,7 @@
           <% if member_signed_in? %>
             <% if current_member.id == @post.member.id %>
               <%= link_to "編集する", edit_post_path(@post), class: "card-link btn btn-secondary rounded-pill" %>
-              <%= link_to "削除する", post_path(@post), method: :delete, class: "card-link btn btn-danger rounded-pill" %>
+              <%= link_to "削除する", post_path(@post), method: :delete, data: {confirm: "削除しますか？"}, class: "card-link btn btn-danger rounded-pill" %>
             <% end %>
           <% end %>
           <span id="favorite_btn_<%= @post.id%>">

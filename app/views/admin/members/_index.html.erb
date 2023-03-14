@@ -13,7 +13,15 @@
           <% members.each do |member| %>
             <tr class="text-center">
               <td><%= member.id %></td>
-              <td><%= image_tag member.get_profile_image(50,50), class: "bd-placeholder-img card-img-top" %></td>
+              <td>
+                <% if admin_signed_in? %>
+                  <%= image_tag member.get_profile_image(50,50), class: "bd-placeholder-img card-img-top" %>
+                <% else %>
+                  <%= link_to member_path(member) do %>
+                    <%= image_tag member.get_profile_image(50,50), class: "bd-placeholder-img card-img-top" %>
+                  <% end %>
+                <% end %>
+              </td>
               <td><%= member.name %></td>
               <td><%= member.email %></td>
               <td>
@@ -23,7 +31,11 @@
                   <span class="text-danger">退会</span>
                 <% end %>
               </td>
-              <td><%= link_to "編集する", edit_admin_member_path(member), class: "btn btn-success" %></td>
+              <td>
+                <% if admin_signed_in? %>
+                  <%= link_to "編集する", edit_admin_member_path(member), class: "btn btn-success" %>
+                <% end %>
+              </td>
             </tr>
           <% end %>
         </tbody>
