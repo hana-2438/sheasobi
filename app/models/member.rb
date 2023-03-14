@@ -20,6 +20,9 @@ class Member < ApplicationRecord
 
   has_one_attached :profile_image
 
+  validates :name, presence:true
+  validates :is_deleted, inclusion: [true, false]
+
   # ゲストユーザー用メソッド
   def self.guest
     find_or_create_by!(email: 'guest@test.com') do |member|

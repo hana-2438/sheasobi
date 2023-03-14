@@ -1,0 +1,2 @@
+$('#post_comments_area').html("<%= j(render "public/post_comments/comments", post: @post)%>");
+$('#post_comments_form').html("<%= j(render "public/post_comments/comment_form", post: @post, post_comment: @post_comment)%>");

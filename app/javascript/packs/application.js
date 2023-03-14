@@ -14,6 +14,9 @@ import "bootstrap";
 import "../stylesheets/application"
 import '../stylesheets/mystyle'
 
+//=require jquery
+//=require rails-ujs
+
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()

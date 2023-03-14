@@ -2,6 +2,15 @@
   <div class="row">
     <div class="col-lg-12 edit_title">
       <h4 class="bg-white mt-4 mb-4 text-center"><%= @member.name %>さんの会員情報編集</h4>
+      <% if @member.errors.any? %>
+        <%= @member.errors.count %>件のエラーが発生しました
+          <ul>
+            <% @member.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+      <% end %>
+
     </div>
   </div>
 
