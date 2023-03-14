@@ -7,9 +7,10 @@ class Public::PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     if @post.save
+      flash[:notice] = "投稿が完了しました！"
       redirect_to post_path(@post)
     else
-      redirect_to request.referer
+      render :new
     end
   end
 
@@ -37,6 +38,7 @@ class Public::PostsController < ApplicationController
   def update
     @post = Post.find(params[:id])
     if @post.update(post_params)
+      flash[:notice] = "更新が完了しました！"
       redirect_to post_path(@post)
     else
       render :edit
@@ -44,11 +46,19 @@ class Public::PostsController < ApplicationController
   end
 
   def index
-    # modelに退会ユーザーを除外するメソッドを記述している
-    @posts = Post.is_not_deleted.page(params[:page]).per(6)
+    @tags = Tag.all
+    if params[:tag_id].present?
+      @tag = Tag.find(params[:tag_id])
+      # modelに退会ユーザーを除外するメソッドを記述している
+      @posts = @tag.posts.is_not_deleted.page(params[:page]).per(6)
+      @count = @tag.posts.is_not_deleted.count
+    else
+      @posts = Post.is_not_deleted.page(params[:page]).per(6)
+      @count = Post.all.is_not_deleted.count
+    end
   end
 
-private
+  private
 
   def post_params
     params.require(:post).permit(:tag_id, :region_id, :title, :place, :caption, :image).merge(member_id: current_member.id)

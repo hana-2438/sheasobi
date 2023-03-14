@@ -1,0 +1,7 @@
+
+      <span class="text-dark text-center title"><i class="fas fa-tag"></i>タグから探す</span>
+      <ul class="list-unstyled d-flex flex-wrap", style="max-height: 400px; overflow-y: auto;">
+        <% tags.each do |tag| %>
+          <li class="flex-grow-1 mr-2 mb-2 tag-name", style=" width: 80px; font-size: 10px;"><%= link_to tag.name, posts_path(tag_id: tag.id) %></li>
+      　<% end %>
+      </ul>

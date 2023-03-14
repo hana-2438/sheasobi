@@ -1,3 +1,6 @@
 class Tag < ApplicationRecord
-  has_many :post_comments, dependent: :destroy
+
+  has_many :posts
+
+  validates :name, presence: true
 end

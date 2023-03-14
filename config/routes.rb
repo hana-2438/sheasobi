@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   # 管理者用
 # URL /admin/sign_in ...
 devise_for :admin,  skip: [:registrations, :passwords] ,controllers: {
@@ -24,6 +25,7 @@ devise_for :members, skip: [:passwords], controllers: {
   namespace :admin do
     get '/' => 'homes#top'
     resources :members, only: [:index,:edit,:update]
+    resources :tags, only: [:index,:create,:edit,:update, :destroy]
   end
 
   scope module: :public do

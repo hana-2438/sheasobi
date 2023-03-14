@@ -5,6 +5,16 @@
   color: #6c6b6b;
 }
 
+
+.navbar-toggler{
+  border-color: #6c6b6b;
+  background-color: #ffffff;
+}
+
+.navbar-toggler.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(0, 0, 0, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
 /*application.html----------------------------------*/
 
 main{
@@ -33,6 +43,14 @@ footer{
   bottom: 0; /*下に固定*/
 }
 
+/*headerの部分テンプレ----------------*/
+
+.nav-link{
+  color:#6c6b6b;
+  border-bottom:double 4px #fa8072;
+}
+
+
 /*登録ボタン等の色をサーモン色に変更-----------------*/
 
 .btn-salmon{
@@ -58,7 +76,30 @@ footer{
   background-size: cover;
 }
 
-
+.tag-area {
+    position: relative;
+    margin: 2em 0;
+    padding: 0.5em 1em;
+    border: solid 3px #fa8072;
+}
+.tag-area .title {
+    position: absolute;
+    display: inline-block;
+    top: -27px;
+    left: -3px;
+    padding: 0 9px;
+    height: 25px;
+    line-height: 25px;
+    font-size: 17px;
+    background: #fa8072;
+    color: #ffffff;
+    font-weight: bold;
+    border-radius: 5px 5px 0 0;
+}
+.tag-area ul {
+    margin: 0;
+    padding: 0;
+}
 /*public/members/show.html*/
 .profile-content{
   height: 500px;
