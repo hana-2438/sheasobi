@@ -55,7 +55,7 @@ class Member < ApplicationRecord
   end
 
   def self.looks(word)
-    @member = Member.where("name LIKE?","%#{word}%")
+    @member = Member.where("name LIKE?","%#{word}%").where(is_deleted: false)
   end
 
 end

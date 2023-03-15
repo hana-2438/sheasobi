@@ -5,7 +5,11 @@
             <th scope="col" style="width: auto"></th>
             <th scope="col" style="width: auto%">ニックネーム</th>
             <th scope="col" style="width: auto">メールアドレス</th>
-            <th scope="col" style="width: auto">会員ステータス</th>
+            <% if admin_signed_in? %>
+            <th scope="col" style="width: auto">
+              会員ステータス
+            </th>
+            <% end %>
             <th scope="col" style="width: auto"></th>
           </tr>
         </thead>
@@ -13,9 +17,18 @@
           <% members.each do |member| %>
             <tr class="text-center">
               <td><%= member.id %></td>
-              <td><%= image_tag member.get_profile_image(50,50), class: "bd-placeholder-img card-img-top" %></td>
+              <td>
+                <% if admin_signed_in? %>
+                  <%= image_tag member.get_profile_image(50,50), class: "bd-placeholder-img card-img-top" %>
+                <% else %>
+                  <%= link_to member_path(member) do %>
+                    <%= image_tag member.get_profile_image(50,50), class: "bd-placeholder-img card-img-top" %>
+                  <% end %>
+                <% end %>
+              </td>
               <td><%= member.name %></td>
               <td><%= member.email %></td>
+              <% if admin_signed_in? %>
               <td>
                 <% if member.is_deleted == false %>
                   <span class="text-success">有効</span>
@@ -23,7 +36,12 @@
                   <span class="text-danger">退会</span>
                 <% end %>
               </td>
-              <td><%= link_to "編集する", edit_admin_member_path(member), class: "btn btn-success" %></td>
+              <% end %>
+              <td>
+                <% if admin_signed_in? %>
+                  <%= link_to "編集する", edit_admin_member_path(member), class: "btn btn-success" %>
+                <% end %>
+              </td>
             </tr>
           <% end %>
         </tbody>
