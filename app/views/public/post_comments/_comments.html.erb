@@ -4,6 +4,10 @@
   <%= post_comment.member.name %> |
   <%= post_comment.created_at.strftime('%Y/%m/%d') %><br>
   <%= post_comment.comment %>
-  <%= link_to "削除", post_post_comment_path(post_comment.post,post_comment),method: :delete, remote: true, class:"btn btn-danger btn-sm" %>
+  <% if member_signed_in? %>
+    <% if current_member.id == post_comment.member.id %>
+      <%= link_to "削除", post_post_comment_path(post_comment.post,post_comment),method: :delete, remote: true, class:"btn btn-danger btn-sm" %>
+    <% end %>
+  <% end %>
 </div>
 <% end %>

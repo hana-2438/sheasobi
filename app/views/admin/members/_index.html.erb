@@ -1,14 +1,12 @@
-      <table class="table table-secondary table-striped mt-3">
-        <thead>
+      <table class="table table-light table-striped table-hover shadow mt-3">
+        <thead class="thead-light">
           <tr class="text-center">
             <th scope="col" style="width: auto">会員ID</th>
             <th scope="col" style="width: auto"></th>
             <th scope="col" style="width: auto%">ニックネーム</th>
-            <th scope="col" style="width: auto">メールアドレス</th>
             <% if admin_signed_in? %>
-            <th scope="col" style="width: auto">
-              会員ステータス
-            </th>
+              <th scope="col" style="width: auto">メールアドレス</th>
+              <th scope="col" style="width: auto">会員ステータス</th>
             <% end %>
             <th scope="col" style="width: auto"></th>
           </tr>
@@ -19,23 +17,23 @@
               <td><%= member.id %></td>
               <td>
                 <% if admin_signed_in? %>
-                  <%= image_tag member.get_profile_image(50,50), class: "bd-placeholder-img card-img-top" %>
+                  <%= image_tag member.get_profile_image(50,50), class: "bd-placeholder-img" %>
                 <% else %>
                   <%= link_to member_path(member) do %>
-                    <%= image_tag member.get_profile_image(50,50), class: "bd-placeholder-img card-img-top" %>
+                    <%= image_tag member.get_profile_image(50,50), class: "bd-placeholder-img" %>
                   <% end %>
                 <% end %>
               </td>
               <td><%= member.name %></td>
-              <td><%= member.email %></td>
               <% if admin_signed_in? %>
-              <td>
-                <% if member.is_deleted == false %>
-                  <span class="text-success">有効</span>
-                <% elsif %>
-                  <span class="text-danger">退会</span>
-                <% end %>
-              </td>
+                <td><%= member.email %></td>
+                <td>
+                  <% if member.is_deleted == false %>
+                    <span class="text-success">有効</span>
+                  <% elsif %>
+                    <span class="text-danger">退会</span>
+                  <% end %>
+                </td>
               <% end %>
               <td>
                 <% if admin_signed_in? %>
