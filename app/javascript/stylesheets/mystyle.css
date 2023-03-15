@@ -1,0 +1,172 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: #6c6b6b;
+}
+
+
+.navbar-toggler{
+  border-color: #6c6b6b;
+  background-color: #ffffff;
+}
+
+.navbar-toggler.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(0, 0, 0, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+/*application.html----------------------------------*/
+
+main{
+  min-height: 100vh;
+  position: relative;/*←相対位置*/
+  padding-bottom: 120px;/*←footerの高さ*/
+  box-sizing: border-box;/*←全て含めてmin-height:100vhに*/
+}
+
+body{
+  background-color: #ffeff7;
+}
+
+header{
+  background-color:#ffeff7;
+}
+
+footer{
+  width: 100%;
+  background-color: #89c7de;
+  color: #fff;
+  text-align: center;
+  padding: 30px 0;
+
+  position: absolute;/*←絶対位置*/
+  bottom: 0; /*下に固定*/
+}
+
+/*headerの部分テンプレ----------------*/
+
+.nav-link{
+  color:#6c6b6b;
+  border-bottom:double 4px #fa8072;
+}
+
+
+/*登録ボタン等の色をサーモン色に変更-----------------*/
+
+.btn-salmon{
+  background-color: #fa8072;
+  color: white;
+}
+
+/*登録ボタン等の色を緑色に変更-----------------*/
+
+.btn-green{
+  background-color: #2e8b57;
+  color: white;
+}
+
+
+/*public/homes/top.html-----------------------------*/
+.main-visual{
+  height: 400px;
+  width: 600px;
+  background-image: url("../../assets/images/top.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.tag-area {
+    position: relative;
+    margin: 2em 0;
+    padding: 0.5em 1em;
+    border: solid 3px #fa8072;
+}
+.tag-area .title {
+    position: absolute;
+    display: inline-block;
+    top: -27px;
+    left: -3px;
+    padding: 0 9px;
+    height: 25px;
+    line-height: 25px;
+    font-size: 17px;
+    background: #fa8072;
+    color: #ffffff;
+    font-weight: bold;
+    border-radius: 5px 5px 0 0;
+}
+.tag-area ul {
+    margin: 0;
+    padding: 0;
+}
+
+
+/*public/members/show.html*/
+.profile-content{
+  height: 500px;
+  width: 300px;
+}
+
+  /*public/posts/show.htmlにも記述あり*/
+.heart_red{
+  color: red;
+}
+
+.profile-side{
+  padding-top: 80px;
+}
+
+
+/*public/members/edit.html*/
+
+.edit_form_group{
+  height: 500px;
+  width: 700px;
+}
+
+/*public/members/edit.html*/
+.confirm-btn{
+  height: 50px;
+  width: 200px;
+}
+
+
+/*public/posts/show.html*/
+.tag-name {
+    padding: 10px 15px;
+    margin: 10px 0;
+    color: #232323;
+    background: #fffacd;
+    border-left: solid 10px #ff8c00;
+    width: 200px;
+}
+.tag-name p {
+    margin: 0;
+    padding: 0;
+}
+
+/*.card-image{*/
+/*  height: 400px;*/
+/*}*/
+
+.normal_heart{
+  color: #c0c0c0;
+  border-color: black;
+  height: 40px;
+}
+
+
+
+/*application/_tag_search.html.erb----------------*/
+.tag_search{
+  width: 300px;
+  height: 600px;
+  color: black;
+}
+
+/*admin/sessions/new.html------------------------*/
+.login_title{
+  text-align: center;
+}
+

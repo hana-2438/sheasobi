@@ -1,0 +1,12 @@
+<p class="text-success"><%= flash[:alert] %></p>
+<div class="container mx-auto">
+  <div class="row mt-3">
+    <div class="col-md-12 mx-auto">
+      <label class="h4 pr-3 pl-3">会員一覧</label>
+       <%= render "index", members: @members %>
+      <div>
+        <%= paginate(@members) %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,16 +1,37 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Sheasobi</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+  <div>
+    <head>
+      <title>Sheasobi</title>
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <%= csrf_meta_tags %>
+      <%= csp_meta_tag %>
+      <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+      <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    </head>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+    <body>
+      <% if member_signed_in? %>
+        <%= render 'layouts/member_header' %>
+      <% elsif admin_signed_in? %>
+        <%= render 'layouts/admin_header' %>
+      <% else %>
+        <%= render 'layouts/log_out' %>
+      <% end %>
 
-  <body>
-    <%= yield %>
-  </body>
+      <main>
+     
+        <%= yield %>
+      </main>
+      <footer class="fixed-bottom py-3 bg-secondary" style="height: 60px;">
+        <div>
+            <div class="mt-2 mr-4  text-center">
+         　  <span class="text-white">
+           　 © しぇあそび
+            </span>
+            </div>
+        </div>
+      </footer>
+    </body>
+  </div>
 </html>

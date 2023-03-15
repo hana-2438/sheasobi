@@ -1,0 +1,30 @@
+           <% posts.each do |post| %>
+            <div class="col mb-3">
+              <div class="card h-100 shadow">
+
+                <div class="card-header">
+                  <p class="card-header small"><%= post.created_at.strftime('%Y/%m/%d')%><br>投稿者：<%= post.member.name%></p>
+                    <% if current_page?(controller: 'posts', action: 'index' ) %>
+                       <%= link_to post_path(post.id) do %>
+                          <%= image_tag post.get_image(300,300), class: "bd-placeholder-img card-img-top post_card" %>
+                       <% end %>
+                    <% else %>
+                       <%= link_to post_path(post) do %>
+                          <%= image_tag post.get_image(300,300), class: "bd-placeholder-img card-img-top post_card" %>
+                       <% end %>
+                    <% end %>
+                </div>
+
+                <div class="card-body">
+                  <p class="card-title font-weight-bold small"><%= post.title %></p>
+                  <div class="tag-name small", style="width: 100px; height: 30px; "><p style="font-size: 10px;"><%= post.tag.name %></p></div>
+                  <p class="card-subtitle mb-2 text-muted small">場所：　<%= post.region.name%>　<%= post.place%></p>
+                  <p class="small">コメント件数：<%= post.post_comments.count %></p>
+                   <span id="favorite_btn_<%= post.id%>">
+                     <%= render "public/posts/favorites", post: post %>
+                   </span>
+                </div>
+
+              </div>
+            </div>
+           <% end %>

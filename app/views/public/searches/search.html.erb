@@ -1,0 +1,27 @@
+<% if @range == "ユーザー" %>
+  <div class="container">
+    <h2 class="mt-4 mb-4">検索結果/ユーザー：<%= @word %></h2>
+    <div class="row">
+      <div class="col-md-12">
+        <%= render "admin/members/index", members: @members %>
+        <div>
+          <%= paginate(@members) %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% else %>
+  <div class="container">
+    <h2 class="mt-4 mb-4">検索結果/投稿：<%= @word %></h2>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="row row-cols-1 row-cols-md-3">
+          <%= render "public/posts/index", posts: @posts %>
+        </div>
+        <div>
+          <%= paginate @posts %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

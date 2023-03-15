@@ -1,0 +1,39 @@
+<p class="text-success"><%= flash[:alert] %></p>
+<div class="container mx-auto">
+  <div class="row mt-3">
+    <div class="col-md-12 mx-auto">
+      <label class="h4 pr-3 pl-3">投稿一覧</label>
+      <table class="table table-light table-striped table-hover mt-3 small shadow">
+        <thead class="thead-light">
+          <tr class="text-center">
+            <th scope="col" style="width: auto">投稿日時</th>
+            <th scope="col" style="width: auto%">ニックネーム</th>
+            <th scope="col" style="width: auto">画像</th>
+            <th scope="col" style="width: auto">タイトル</th>
+            <th scope="col" style="width: auto%">場所</th>
+            <th scope="col" style="width: auto%"></th>
+            <th scope="col" style="width: auto%">タグ</th>
+            <th scope="col" style="width: auto%">説明文</th>
+          </tr>
+        </thead>
+        <tbody class="table-light">
+          <% @posts.each do |post| %>
+            <tr class="text-center">
+              <td><%= post.created_at.strftime('%Y/%m/%d %H:%M') %></td>
+              <td><%= post.member.name%></td>
+              <td> <%= image_tag post.get_image(50,50), class: "bd-placeholder-img card-img-top" %></td>
+              <td><%= post.title %></td>
+              <td><%= post.region.name %></td>
+              <td><%= post.place %></td>
+              <td><%= post.tag.name %></td>
+              <td><%= post.caption%></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <div>
+        <%= paginate(@posts) %>
+      </div>
+    </div>
+  </div>
+</div>

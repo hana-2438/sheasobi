@@ -1,0 +1,26 @@
+      <% if members.exists? %>
+          <table class="table table-light table-striped table-hover shadow mt-3">
+            <thead>
+              <tr>
+                <th></th>
+                <th>ニックネーム</th>
+                <th></th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <% members.each do |member| %>
+              <tr>
+                <td><%= image_tag member.get_profile_image(50,50) %></td>
+                <td>
+                  <%= link_to member_path(member) do %>
+                    <%= member.name %>
+                  <% end %>
+                </td>
+                <td>フォロー数：<%= member.followings.count %></td>
+                <td>フォロワー数：<%= member.followers.count %></td>
+              </tr>
+              <% end %>
+            </tbody>
+          </table>
+      <% end %>
