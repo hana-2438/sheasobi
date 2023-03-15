@@ -28,6 +28,6 @@ class Post < ApplicationRecord
   end
 
   def self.looks(word)
-    @post = Post.where(["title LIKE? OR place LIKE?","%#{word}%","%#{word}%"])
+    @post = Post.where(["title LIKE? OR place LIKE?","%#{word}%","%#{word}%"]).joins(:member).where(member: { is_deleted: false })
   end
 end

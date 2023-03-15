@@ -5,7 +5,11 @@
             <th scope="col" style="width: auto"></th>
             <th scope="col" style="width: auto%">ニックネーム</th>
             <th scope="col" style="width: auto">メールアドレス</th>
-            <th scope="col" style="width: auto">会員ステータス</th>
+            <% if admin_signed_in? %>
+            <th scope="col" style="width: auto">
+              会員ステータス
+            </th>
+            <% end %>
             <th scope="col" style="width: auto"></th>
           </tr>
         </thead>
@@ -24,6 +28,7 @@
               </td>
               <td><%= member.name %></td>
               <td><%= member.email %></td>
+              <% if admin_signed_in? %>
               <td>
                 <% if member.is_deleted == false %>
                   <span class="text-success">有効</span>
@@ -31,6 +36,7 @@
                   <span class="text-danger">退会</span>
                 <% end %>
               </td>
+              <% end %>
               <td>
                 <% if admin_signed_in? %>
                   <%= link_to "編集する", edit_admin_member_path(member), class: "btn btn-success" %>

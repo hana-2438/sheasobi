@@ -28,7 +28,7 @@
                 <div class="card-header">
                   <p class="card-header small"><%= post.created_at.strftime('%Y/%m/%d')%><br>投稿者：<%= post.member.name%></p>
                   <%= link_to post_path(post) do %>
-                  <%= image_tag post.get_image(200,200), class: "bd-placeholder-img card-img-top" %>
+                  <%= image_tag post.get_image(200,200), class: "bd-placeholder-img card-img-top post_card" %>
                   <% end %>
                 </div>
 

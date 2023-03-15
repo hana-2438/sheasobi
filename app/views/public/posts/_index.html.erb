@@ -6,11 +6,11 @@
                   <p class="card-header small"><%= post.created_at.strftime('%Y/%m/%d')%><br>投稿者：<%= post.member.name%></p>
                     <% if current_page?(controller: 'posts', action: 'index' ) %>
                        <%= link_to post_path(post.id) do %>
-                          <%= image_tag post.get_image(300,300), class: "bd-placeholder-img card-img-top" %>
+                          <%= image_tag post.get_image(300,300), class: "bd-placeholder-img card-img-top post_card" %>
                        <% end %>
                     <% else %>
                        <%= link_to post_path(post) do %>
-                          <%= image_tag post.get_image(300,300), class: "bd-placeholder-img card-img-top" %>
+                          <%= image_tag post.get_image(300,300), class: "bd-placeholder-img card-img-top post_card" %>
                        <% end %>
                     <% end %>
                 </div>

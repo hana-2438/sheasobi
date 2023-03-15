@@ -1,4 +1,5 @@
 <div class="container">
+  <p class="text-success"><%= flash[:notice] %></p>
   <div class="row">
     <div class="col-lg-4 h2 mt-4">
       <%= @member.name %>さんのProfile
@@ -7,19 +8,15 @@
         <%= image_tag @member.get_profile_image(200, 200), class: "rounded-circle img-thumbnail border-secondary mt-4" %>
       <p class="h2 d-flex font-weight-bold justify-content-center align-items-center"><%= @member.name %></p>
       <p class="d-flex justify-content-center align-items-center"><%= @member.introduction %></p>
-
       <% unless member_signed_in? %>
         <%= link_to "ユーザーをフォローするには会員登録またはログインが必要です",new_member_registration_path, class: "btn btn-secondary rounded-pill" %>
       <% else %>
         <% if current_member.id == params[:id].to_i %>
            <%= link_to "編集する", edit_member_path(@member), class: "btn btn-secondary rounded-pill btn-lg" %>
         <% else %>
-          <!--ふぉろーに関する記述はフォロー機能実装時に詳しく記述-->
-          <% if current_member.following?(Member.find(params[:id])) %>
-            <%= link_to "フォロー中",  member_relationships_path(params[:id]), method: :delete, class: "btn btn-salmon rounded-pill" %>
-          <% else %>
-            <%= link_to "フォローする", member_relationships_path(params[:id]), method: :post, class: "btn btn-green rounded-pill" %>
-          <% end %>
+          <div id="follow_btn">
+             <%= render "public/relationships/follow_btn", member: @member %>
+          </div>
         <% end %>
       <% end %>
     </div>
