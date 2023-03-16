@@ -2,6 +2,8 @@ class Post < ApplicationRecord
   belongs_to :member
   has_many :post_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_many :favorited_members, through: :favorites, source: :member
+  has_many :read_counts, dependent: :destroy
   belongs_to :tag
   belongs_to :region
 

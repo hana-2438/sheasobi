@@ -7,6 +7,7 @@ class Member < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_many :post_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_many :read_counts, dependent: :destroy
 
   # フォロー機能
     # フォローした
@@ -17,6 +18,7 @@ class Member < ApplicationRecord
   # フォローフォロワー一覧
   has_many :followings, through: :relationships, source: :followed
   has_many :followers, through: :reverse_of_relationships, source: :follower
+
 
   has_one_attached :profile_image
 

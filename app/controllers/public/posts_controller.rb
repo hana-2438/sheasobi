@@ -20,6 +20,11 @@ class Public::PostsController < ApplicationController
     if @post.member.is_deleted
       redirect_to root_path
     end
+
+    # 今日、該当の投稿を閲覧していない場合閲覧数としてカウントする
+    unless ReadCount.where(created_at: Time.zone.now.all_day).find_by(member_id: current_member.id, post_id: @post.id)
+      current_member.read_counts.create(post_id: @post.id)
+    end
     @member = @post.member.id
     @post_comment = PostComment.new
   end
@@ -47,13 +52,25 @@ class Public::PostsController < ApplicationController
 
   def index
     @tags = Tag.all
+    to  = Time.current.at_end_of_day
+    from  = (to - 6.day).at_beginning_of_day
     if params[:tag_id].present?
       @tag = Tag.find(params[:tag_id])
-      # modelに退会ユーザーを除外するメソッドを記述している
-      @posts = @tag.posts.is_not_deleted.page(params[:page]).per(6)
+      # modelに退会ユーザーを除外するメソッドを記述している(is_not_deleted)
+      posts = @tag.posts.includes(:favorited_members).is_not_deleted
+      posts = posts.sort {|a,b|
+          a.favorited_members.includes(:favorites).where(created_at: from...to).size <=>
+          b.favorited_members.includes(:favorites).where(created_at: from...to).size
+        }
+      @posts = Kaminari.paginate_array(posts).page(params[:page]).per(6)
       @count = @tag.posts.is_not_deleted.count
     else
-      @posts = Post.is_not_deleted.page(params[:page]).per(6)
+      posts = Post.includes(:favorited_members).is_not_deleted
+      posts = posts.sort {|a,b|
+          a.favorited_members.includes(:favorites).where(created_at: from...to).size <=>
+          b.favorited_members.includes(:favorites).where(created_at: from...to).size
+        }
+      @posts = Kaminari.paginate_array(posts).page(params[:page]).per(6)
       @count = Post.all.is_not_deleted.count
     end
   end
