@@ -1,4 +1,8 @@
 <%= form_with model: [post, post_comment], method: :post, local: false do |f| %>
   <%= f.text_area :comment, placeholder: "コメントをここに", class: 'form-control' %>
-  <%= f.submit "送信する" , class:"btn btn-secondary mt-1" %>
+  <% if member_signed_in? %>
+    <%= f.submit "送信する" , class:"btn btn-secondary mt-1" %>
+  <% else %>
+    <%= link_to "コメントするには会員登録が必要です", new_member_registration_path, class: "btn btn-danger rounded-pill btn-sm mt-2" %>
+  <% end %>
 <% end %>

@@ -22,9 +22,12 @@ class Public::PostsController < ApplicationController
     end
 
     # その日一日、該当の投稿を閲覧していない場合閲覧数としてカウントする
-    unless ReadCount.where(created_at: Time.zone.now.all_day).find_by(member_id: current_member.id, post_id: @post.id)
-      current_member.read_counts.create(post_id: @post.id)
+    if member_signed_in?
+      unless ReadCount.where(created_at: Time.zone.now.all_day).find_by(member_id: current_member.id, post_id: @post.id)
+       current_member.read_counts.create(post_id: @post.id)
+      end
     end
+
     @member = @post.member.id
     @post_comment = PostComment.new
   end

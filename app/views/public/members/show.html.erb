@@ -9,7 +9,7 @@
       <p class="h2 d-flex font-weight-bold justify-content-center align-items-center"><%= @member.name %></p>
       <p class="d-flex justify-content-center align-items-center"><%= @member.introduction %></p>
       <% unless member_signed_in? %>
-        <%= link_to "ユーザーをフォローするには会員登録またはログインが必要です",new_member_registration_path, class: "btn btn-secondary rounded-pill" %>
+        <%= link_to "フォローするには会員登録が必要です",new_member_registration_path, class: "btn btn-secondary rounded-pill" %>
       <% else %>
         <% if current_member.id == params[:id].to_i %>
            <%= link_to "編集する", edit_member_path(@member), class: "btn btn-secondary rounded-pill btn-lg" %>
