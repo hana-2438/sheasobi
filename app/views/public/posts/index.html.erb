@@ -2,6 +2,10 @@
    <%= flash[:notice] %>
   <h2 class="mt-4 mb-4"><i class="fas fa-car-side"></i>みんなのおでかけスポット</h2>
   <span>全<%= @count %>件</span>
+  <!--<%= form_tag({controller:"posts",action:"index"}, method: :get) do %>-->
+  <!--  <%= select_tag("sort", options_for_select([['--並べ替え選択--', ''], ['いいねが多い順', 'favorite'], ['日付が新しい順', 'newpost']])) %>-->
+  <!--  <%= submit_tag '並べ替える' %>-->
+  <!--<% end %>-->
 
   <div class="row">
     <div class="col-md-9">
