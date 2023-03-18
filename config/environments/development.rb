@@ -75,4 +75,17 @@ Rails.application.configure do
   # config.action_cable.disable_request_forgery_protection = true
   config.hosts << "d7c5c40b18b447118c091fb678bd76d4.vfs.cloud9.ap-northeast-1.amazonaws.com"
   config.active_job.queue_adapter = :inline
+
+  # お問い合わせgmail送信用の設定
+  config.action_mailer.raise_delivery_errors  = true
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address:                      'smtp.gmail.com',
+    port:                         587,
+    domain:                       'gmail.com',
+    user_name:                    ENV['INQUIRIES_EMAIL'],
+    password:                     ENV['INQUIRIES_PASSWORD'],
+    authentication:               'plain',
+    enable_starttls_auto:         true
+  }
 end

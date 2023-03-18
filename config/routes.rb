@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
   # 管理者用
 # URL /admin/sign_in ...
 devise_for :admin,  skip: [:registrations, :passwords] ,controllers: {
@@ -50,6 +51,10 @@ devise_for :members, skip: [:passwords], controllers: {
     get '/searches' => 'searches#search', as:'search'
   end
 
+
+   get 'inquiries/index' => 'inquiries#index'
+   get 'inquiries/confirm' => 'inquiries#confirm'
+   get 'inquiries/thanks' => 'inquiries#thanks'
 
 
 end
