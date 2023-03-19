@@ -54,14 +54,25 @@ class Public::PostsController < ApplicationController
   end
 
   def index
+
     @tags = Tag.all
     if params[:tag_id].present?
       @tag = Tag.find(params[:tag_id])
-      # modelに退会ユーザーを除外するメソッドを記述している
-      @posts = @tag.posts.is_not_deleted.order(created_at: :desc).page(params[:page]).per(6)
+      # modelに退会ユーザーを除外するメソッドを記述している(is_not_deleted)
+      posts = @tag.posts.includes(:favorited_members).is_not_deleted
+      order_posts = posts.order(created_at: :desc)
+      
+      @posts = order_posts.page(params[:page]).per(6)
       @count = @tag.posts.is_not_deleted.count
     else
-      @posts = Post.is_not_deleted.order(created_at: :desc).page(params[:page]).per(6)
+      posts = Post.includes(:favorited_members).is_not_deleted
+      if params[:sort] === "favorite"
+        # left_joinsでいいねが0の投稿についても一覧に表示させる。groupで投稿ごとに分け、投稿ごとのいいね多い順で並び替える（pluckは配列で返す）
+        order_posts = posts.left_joins(:favorites).group(:post_id).order('count(post_id) desc')
+      else
+        order_posts = posts.order(created_at: :desc)
+      end
+      @posts = order_posts.page(params[:page]).per(6)
       @count = Post.all.is_not_deleted.count
     end
   end
