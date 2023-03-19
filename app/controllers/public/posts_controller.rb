@@ -61,18 +61,23 @@ class Public::PostsController < ApplicationController
       # modelに退会ユーザーを除外するメソッドを記述している(is_not_deleted)
       posts = @tag.posts.includes(:favorited_members).is_not_deleted
       order_posts = posts.order(created_at: :desc)
-      
+
       @posts = order_posts.page(params[:page]).per(6)
       @count = @tag.posts.is_not_deleted.count
     else
       posts = Post.includes(:favorited_members).is_not_deleted
       if params[:sort] === "favorite"
         # left_joinsでいいねが0の投稿についても一覧に表示させる。groupで投稿ごとに分け、投稿ごとのいいね多い順で並び替える（pluckは配列で返す）
-        order_posts = posts.left_joins(:favorites).group(:post_id).order('count(post_id) desc')
+        order_posts = posts.sort { |a, b| b.favorites.count <=> a.favorites.count }
+        #order_posts = posts.left_joins(:favorites).order('count(post_id) desc')
       else
         order_posts = posts.order(created_at: :desc)
       end
-      @posts = order_posts.page(params[:page]).per(6)
+      if order_posts.class == Array
+        @posts = Kaminari.paginate_array(order_posts).page(params[:page]).per(6)
+      else
+        @posts = order_posts.page(params[:page]).per(6)
+      end
       @count = Post.all.is_not_deleted.count
     end
   end
