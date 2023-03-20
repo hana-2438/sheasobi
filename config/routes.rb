@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-
   # 管理者用
 # URL /admin/sign_in ...
 devise_for :admin,  skip: [:registrations, :passwords] ,controllers: {
@@ -19,14 +18,11 @@ devise_for :members, skip: [:passwords], controllers: {
     post 'guest_sign_in', to: 'public/sessions#guest_sign_in'
   end
 
-
-
-
-
   namespace :admin do
     get '/' => 'homes#top'
     resources :members, only: [:index,:edit,:update]
     resources :tags, only: [:index,:create,:edit,:update, :destroy]
+    resources :reports, only: [:index, :show, :update]
   end
 
   scope module: :public do
@@ -34,6 +30,7 @@ devise_for :members, skip: [:passwords], controllers: {
     get 'members/confirm' => 'members#confirm',as:'members_confirm'
     resources :members, only: [:show,:edit,:update,:destroy] do
       resource :relationships, only: [:create, :destroy]
+      resources :reports, only: [:new, :create]
       get 'followings' => 'relationships#followings', as: 'followings'
       get 'followers' => 'relationships#followers', as: 'followers'
       member do

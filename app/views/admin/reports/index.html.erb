@@ -1,0 +1,33 @@
+<p class="text-success"><%= flash[:alert] %></p>
+<div class="container mx-auto">
+  <div class="row mt-3">
+    <div class="col-md-12 mx-auto">
+      <label class="h4 pr-3 pl-3">通報一覧</label>
+      <table class="table table-light table-striped table-hover mt-3 small shadow">
+        <thead class="thead-light">
+          <tr class="text-center">
+            <th scope="col" style="width: auto">通報ID</th>
+            <th scope="col" style="width: auto%">通報日時</th>
+            <th scope="col" style="width: auto%">会員名</th>
+            <th scope="col" style="width: auto">通報者</th>
+            <th scope="col" style="width: auto%">対応ステータス</th>
+          </tr>
+        </thead>
+        <tbody class="table-light">
+          <% @reports.each do |report| %>
+            <tr class="text-center">
+              <td><%= link_to report.id, admin_report_path(report) %></td>
+              <td><%= report.created_at.strftime('%Y/%m/%d %H:%M') %></td>
+              <td><%= report.reported.name %></td>
+              <td><%= report.reporter.name %></td>
+              <td><%= report.report_status_i18n %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <div>
+        <%= paginate(@reports) %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -17,6 +17,9 @@
           <div id="follow_btn">
              <%= render "public/relationships/follow_btn", member: @member %>
           </div>
+          <div class="mt-3">
+            <%= link_to "ユーザーを通報", new_member_report_path(@member), class: "btn btn-danger rounded-pill"  %>
+          </div>
         <% end %>
       <% end %>
     </div>
