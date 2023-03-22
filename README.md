@@ -1,4 +1,4 @@
-# しぇあそび![しぇあそび (230 × 115 px) (1)](https://user-images.githubusercontent.com/121591703/226826749-55350717-af91-4c15-ae77-5fcb9e4d5ada.png)
+# しぇあそび! <img src="[しぇあそび (230 × 115 px) (1)](https://user-images.githubusercontent.com/121591703/226826749-55350717-af91-4c15-ae77-5fcb9e4d5ada.png)"" width="100px">
 
 ## サイト概要
 ### サイトテーマ
