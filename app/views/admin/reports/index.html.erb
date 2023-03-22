@@ -3,7 +3,9 @@
   <div class="row mt-3">
     <div class="col-md-12 mx-auto">
       <label class="h4 pr-3 pl-3">通報一覧</label>
+
       <table class="table table-light table-striped table-hover mt-3 small shadow">
+
         <thead class="thead-light">
           <tr class="text-center">
             <th scope="col" style="width: auto">通報ID</th>
@@ -13,6 +15,7 @@
             <th scope="col" style="width: auto%">対応ステータス</th>
           </tr>
         </thead>
+
         <tbody class="table-light">
           <% @reports.each do |report| %>
             <tr class="text-center">
@@ -24,10 +27,13 @@
             </tr>
           <% end %>
         </tbody>
+
       </table>
+
       <div>
         <%= paginate(@reports) %>
       </div>
+
     </div>
   </div>
 </div>

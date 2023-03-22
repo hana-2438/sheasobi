@@ -29,6 +29,7 @@ class Post < ApplicationRecord
     favorites.exists?(member_id: member.id)
   end
 
+  # 投稿検索のメソッド
   def self.looks(word)
     @post = Post.where(["title LIKE? OR place LIKE?","%#{word}%","%#{word}%"]).joins(:member).where(member: { is_deleted: false })
   end

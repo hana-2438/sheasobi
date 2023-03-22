@@ -1,4 +1,5 @@
 class InquiryMailer < ApplicationMailer
+
   # 送信元アドレス
   default from: "example@example.com"
 

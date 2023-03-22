@@ -38,8 +38,8 @@ class Public::MembersController < ApplicationController
 
   def favorites
     @member = Member.find(params[:id])
-    # ユーザーがいいねしたすべての投稿のidを取得
-    favorites= Favorite.where(member_id: @member.id).pluck(:post_id)
+    # ユーザーがいいねしたすべての投稿のidを新着順で取得
+    favorites= Favorite.order(created_at: :desc).where(member_id: @member.id).pluck(:post_id)
     # 投稿の中からユーザーがいいねした投稿を取得してくる
     @favorite_posts = Kaminari.paginate_array(Post.find(favorites)).page(params[:page]).per(6)
   end
@@ -50,6 +50,7 @@ class Public::MembersController < ApplicationController
     params.require(:member).permit(:name, :email, :profile_image, :introduction, :is_deleted)
   end
 
+  # current_member以外は編集できないようにするための記述
   def ensure_correct_member
     @member = Member.find(params[:id])
     unless @member == current_member
@@ -57,13 +58,13 @@ class Public::MembersController < ApplicationController
     end
   end
 
+  # ゲストユーザーがプロフィール編集画面へ遷移できなくさせるための記述
   def ensure_guest_member
     @member = Member.find(params[:id])
     if @member.name == "guestmember"
       redirect_to member_path(current_member), notice:"ゲストユーザーはプロフィール編集画面へ遷移できません。"
     end
   end
-
 
 end
 

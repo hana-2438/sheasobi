@@ -1,4 +1,5 @@
 class Public::ReportsController < ApplicationController
+  
   def new
     @report = Report.new
     # どのユーザーに対する通報か

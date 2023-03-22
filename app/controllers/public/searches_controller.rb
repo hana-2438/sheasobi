@@ -1,4 +1,5 @@
 class Public::SearchesController < ApplicationController
+  
   def search
     @range = params[:range]
     if @range == "ユーザー"
@@ -8,4 +9,5 @@ class Public::SearchesController < ApplicationController
     end
     @word = params[:word]
   end
+  
 end

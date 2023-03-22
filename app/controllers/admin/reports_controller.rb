@@ -1,5 +1,7 @@
 class Admin::ReportsController < ApplicationController
+  
   def index
+    # created_at: :asc(昇順)id番号順に並ぶ
     @reports = Report.all.order(created_at: :asc).page(params[:page]).per(10)
   end
 
@@ -9,7 +11,7 @@ class Admin::ReportsController < ApplicationController
 
   def update
     @report = Report.find(params[:id])
-    if @report.update!(report_params)
+    if @report.update(report_params)
       flash[:notice] = "対応ステータスを更新しました。"
       redirect_to admin_reports_path
     else

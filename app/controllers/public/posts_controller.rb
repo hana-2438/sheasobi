@@ -23,7 +23,9 @@ class Public::PostsController < ApplicationController
 
     # その日一日、該当の投稿を閲覧していない場合閲覧数としてカウントする
     if member_signed_in?
+      # ReadCountレコードの中に今日の日付のデータ（member_idがcurrent_member.id,で、post_idが現在params[:id]を受け取っている投稿）が存在しないか
       unless ReadCount.where(created_at: Time.zone.now.all_day).find_by(member_id: current_member.id, post_id: @post.id)
+        # 存在していなければ閲覧数としてカウントする
        current_member.read_counts.create(post_id: @post.id)
       end
     end
@@ -54,23 +56,22 @@ class Public::PostsController < ApplicationController
   end
 
   def index
-
     @tags = Tag.all
     if params[:tag_id].present?
       @tag = Tag.find(params[:tag_id])
       # modelに退会ユーザーを除外するメソッドを記述している(is_not_deleted)
       posts = @tag.posts.includes(:favorited_members).is_not_deleted
       order_posts = posts.order(created_at: :desc)
-
       @posts = order_posts.page(params[:page]).per(6)
       @count = @tag.posts.is_not_deleted.count
     else
+      # includesで親子関係にあるfavorited_membersのデータをすべて取得し、有効会員のデータのみ取得する
       posts = Post.includes(:favorited_members).is_not_deleted
       if params[:sort] === "favorite"
-        # left_joinsでいいねが0の投稿についても一覧に表示させる。groupで投稿ごとに分け、投稿ごとのいいね多い順で並び替える（pluckは配列で返す）
+        # a,bで<=>演算子で比較し降順で並べ替えをする（いいね多い順）
         order_posts = posts.sort { |a, b| b.favorites.count <=> a.favorites.count }
-        #order_posts = posts.left_joins(:favorites).order('count(post_id) desc')
       else
+        # 投稿日の降順（新着順）で並び替え
         order_posts = posts.order(created_at: :desc)
       end
       if order_posts.class == Array
@@ -84,6 +85,8 @@ class Public::PostsController < ApplicationController
   private
 
   def post_params
+    # 認証目的でcurrent_member.idを渡している
     params.require(:post).permit(:tag_id, :region_id, :title, :place, :caption, :image).merge(member_id: current_member.id)
   end
+
 end

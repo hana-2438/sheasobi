@@ -1,5 +1,5 @@
 class Inquiry
-  # DBには保存しない為、以下の記述
+  # DBには保存しないがヘルパーメソッド等使用したいので、以下の記述
   include ActiveModel::Model
 
   attr_accessor :name, :email, :message
