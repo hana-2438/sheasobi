@@ -27,17 +27,6 @@
 
 ### サイトURL
 
-
-## 設計書
-- ER図
-![しぇあそびER図 drawio (2)](https://user-images.githubusercontent.com/121591703/226814150-f0223228-f47f-458e-a8bc-09e96632117f.png)
-- 画面遷移図（会員側）
-![しぇあそび画面遷移図-会員側 drawio](https://user-images.githubusercontent.com/121591703/226814445-0d905071-6bb4-496e-bd51-3299f93961b4.png)
-- 画面遷移図（管理者側）
-![しぇあそび画面遷移図-管理者側 drawio](https://user-images.githubusercontent.com/121591703/226814687-4a8503e2-2b1a-4026-8b1e-7d07ba706569.png)
-- アプリケーション詳細設計
-![アプリケーション詳細設計](https://user-images.githubusercontent.com/121591703/226815620-4d9fa92d-0b90-4728-806b-c611b4b6d334.png)
-
 ## 機能一覧
 ### 認証機能（devise）
 - ユーザー登録
@@ -65,6 +54,16 @@
 - レスポンシブ対応
 - 管理者側の検索機能
 - DM機能など、コミュニティサイトの要素も取り入れたい
+
+## 設計書
+- ER図
+![しぇあそびER図 drawio (2)](https://user-images.githubusercontent.com/121591703/226814150-f0223228-f47f-458e-a8bc-09e96632117f.png)
+- 画面遷移図（会員側）
+![しぇあそび画面遷移図-会員側 drawio](https://user-images.githubusercontent.com/121591703/226814445-0d905071-6bb4-496e-bd51-3299f93961b4.png)
+- 画面遷移図（管理者側）
+![しぇあそび画面遷移図-管理者側 drawio](https://user-images.githubusercontent.com/121591703/226814687-4a8503e2-2b1a-4026-8b1e-7d07ba706569.png)
+- アプリケーション詳細設計
+![アプリケーション詳細設計](https://user-images.githubusercontent.com/121591703/226815620-4d9fa92d-0b90-4728-806b-c611b4b6d334.png)
 
 ## 開発環境
 - OS：Linux(CentOS)

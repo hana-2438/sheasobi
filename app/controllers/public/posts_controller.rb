@@ -1,4 +1,5 @@
 class Public::PostsController < ApplicationController
+  before_action :ensure_correct_member, only: [:edit, :update]
 
   def new
     @post = Post.new
@@ -83,6 +84,14 @@ class Public::PostsController < ApplicationController
     end
   end
   private
+
+   # current_member以外は編集できないようにするための記述
+  def ensure_correct_member
+    @member = Post.find(params[:id]).member_id
+    unless @member == current_member
+      redirect_to member_path(current_member)
+    end
+  end
 
   def post_params
     # 認証目的でcurrent_member.idを渡している
