@@ -88,7 +88,7 @@ class Public::PostsController < ApplicationController
    # current_member以外は編集できないようにするための記述
   def ensure_correct_member
     @member = Post.find(params[:id]).member_id
-    unless @member == current_member
+    unless @member == current_member.id
       redirect_to member_path(current_member)
     end
   end
