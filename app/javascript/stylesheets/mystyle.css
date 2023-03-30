@@ -103,10 +103,7 @@ footer{
 
 
 /*public/members/show.html*/
-.profile-content{
-  height: 500px;
-  width: 300px;
-}
+
 
   /*public/posts/show.htmlにも記述あり*/
 .heart_red{

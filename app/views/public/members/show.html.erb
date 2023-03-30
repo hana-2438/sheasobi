@@ -1,13 +1,13 @@
 <div class="container">
   <p class="text-success"><%= flash[:notice] %></p>
-  <div class="row">
-    <div class="col-lg-4 h2 mt-4">
-      <%= @member.name %>さんのProfile
-    </div>
-    <div class="col-lg-4 text-center profile-content">
+  <div class="row h2 mt-4">
+    <%= @member.name %>さんのProfile
+  </div>
+  <div class="row mb-4">
+    <div class="col-lg-8 text-center">
         <%= image_tag @member.get_profile_image(200, 200), class: "rounded-circle img-thumbnail border-secondary mt-4" %>
       <p class="h2 d-flex font-weight-bold justify-content-center align-items-center"><%= @member.name %></p>
-      <p class="d-flex justify-content-center align-items-center"><%= @member.introduction %></p>
+      <p class="d-flex justify-content-center align-items-center"><%= safe_join(@member.introduction.split("\n"),tag(:br)) %></p>
       <% unless member_signed_in? %>
         <%= link_to "フォローするには会員登録が必要です",new_member_registration_path, class: "btn btn-secondary rounded-pill" %>
       <% else %>
@@ -24,20 +24,20 @@
       <% end %>
     </div>
 
-    <div class="col-lg-4 mt-4 profile-side">
-      <div class="col-lg-12 h4 mb-4">
+    <div class="col-lg-4 profile-side">
+      <div class="col-lg-12 col-12 h4 mb-4">
         フォロー：
         <%= link_to member_followings_path(@member) do %>
           <%= @member.followings.count %>
         <% end %>
       </div>
-      <div class="col-lg-12 h4 mb-4">
+      <div class="col-lg-12 col-12 h4 mb-4">
         フォロワー：
          <%= link_to member_followers_path(@member) do %>
            <%= @member.followers.count %>
          <% end %>
       </div>
-      <div class="col-lg-12 mt-5">
+      <div class="col-lg-12 col-12 mt-5">
         <% if member_signed_in? && current_member.id == params[:id].to_i %>
           <%= link_to favorites_member_path(@member), class: "btn btn-salmon btn-lg rounded-pill" do %>
             いいね<i class="fas fa-heart heart_red"></i>した投稿を見る
@@ -48,7 +48,7 @@
   </div>
   <!--ユーザーの投稿一覧-->
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 col-12">
         <div class="row row-cols-1 row-cols-md-3">
         <%= render "public/posts/index", posts: @posts %>
         </div>
