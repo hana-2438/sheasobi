@@ -18,11 +18,13 @@ class Post < ApplicationRecord
   scope :is_not_deleted, -> { joins(:member).where(member: { is_deleted: false }) }
 
   def get_image(width, height)
-    unless image.attached?
+    if image.attached?
+      image.variant(resize_to_fill: [width, height]).processed
+    else
       file_path = Rails.root.join('app/assets/images/post_noimage.jpg')
       image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
+      image.variant(resize_to_fill: [width, height]).processed
     end
-    image.variant(resize_to_fill: [width, height]).processed
   end
 
   def favorited_by?(member)
