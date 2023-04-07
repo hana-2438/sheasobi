@@ -7,7 +7,14 @@ class Post < ApplicationRecord
   belongs_to :tag
   belongs_to :region
 
-  has_one_attached :image
+  has_one_attached :image do |attachable|
+    # TinyPNGのAPIが正常に動作しているか確認するためのbyebug
+    byebug
+
+    Tinify.from_buffer(attachable).to_buffer
+
+  end
+
 
   validates :title, presence: true
   validates :place, presence: true

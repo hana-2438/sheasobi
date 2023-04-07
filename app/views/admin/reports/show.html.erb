@@ -15,7 +15,11 @@
          </tr>
          <tr>
            <td>会員名</td>
-           <td><%= @report.reported.name %></td>
+           <td>
+             <%= link_to member_path(@report.reported) do %>
+               <%= @report.reported.name %>
+             <% end %>
+           </td>
          </tr>
          <tr>
            <td>通報理由</td>
