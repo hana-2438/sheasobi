@@ -32,7 +32,7 @@ class Public::MembersController < ApplicationController
   def withdraw
     current_member.update(is_deleted: true)
     reset_session
-    flash[:alert] = "退会しました。"
+    flash[:alert] = "退会しました。またのご利用お待ちしております。"
     redirect_to root_path
   end
 
