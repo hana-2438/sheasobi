@@ -5,6 +5,7 @@ class Public::RegistrationsController < Devise::RegistrationsController
 
 
   def after_sign_up_path_for(resource)
+    flash[:alert] = '会員登録が完了しました。しぇあそびをお楽しみください！'
     root_path
   end
 
