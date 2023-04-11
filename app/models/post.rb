@@ -8,10 +8,8 @@ class Post < ApplicationRecord
   belongs_to :region
 
   has_one_attached :image do |attachable|
-    # TinyPNGのAPIが正常に動作しているか確認するためのbyebug
-    byebug
 
-    Tinify.from_buffer(attachable).to_buffer
+    # Tinify.from_buffer(attachable).to_buffer
 
   end
 
