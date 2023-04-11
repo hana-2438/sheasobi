@@ -21,7 +21,11 @@
             <tr class="text-center">
               <td><%= link_to report.id, admin_report_path(report) %></td>
               <td><%= report.created_at.strftime('%Y/%m/%d %H:%M') %></td>
-              <td><%= report.reported.name %></td>
+              <td>
+                <%= link_to member_path(report.reported) do %>
+                  <%= report.reported.name %>
+                <% end %>
+              </td>
               <td><%= report.reporter.name %></td>
               <td><%= report.report_status_i18n %></td>
             </tr>

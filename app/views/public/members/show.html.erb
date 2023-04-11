@@ -8,6 +8,7 @@
         <%= image_tag @member.get_profile_image(200, 200), class: "rounded-circle img-thumbnail border-secondary mt-4" %>
       <p class="h2 d-flex font-weight-bold justify-content-center align-items-center"><%= @member.name %></p>
       <p class="d-flex justify-content-center align-items-center">
+        <!--自己紹介文が存在すれば表示させる-->
         <% if @member.introduction.present? %>
          <%= safe_join(@member.introduction.split("\n"),tag(:br)) %>
         <% end %>

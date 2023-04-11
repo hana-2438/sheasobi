@@ -7,7 +7,12 @@ class Post < ApplicationRecord
   belongs_to :tag
   belongs_to :region
 
-  has_one_attached :image
+  has_one_attached :image do |attachable|
+
+    # Tinify.from_buffer(attachable).to_buffer
+
+  end
+
 
   validates :title, presence: true
   validates :place, presence: true
