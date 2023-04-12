@@ -6,7 +6,9 @@
   <%= post_comment.comment %>
   <% if member_signed_in? %>
     <% if current_member.id == post_comment.member.id %>
-      <%= link_to "削除", post_post_comment_path(post_comment.post,post_comment),method: :delete, remote: true, class:"btn btn-danger btn-sm" %>
+      <%= link_to post_post_comment_path(post_comment.post,post_comment),method: :delete, remote: true, class:"btn btn-outline-danger btn-sm" do %>
+        <i class="fas fa-trash-alt trash"></i>
+      <% end %>
     <% end %>
   <% end %>
 </div>

@@ -6,10 +6,12 @@ class Post < ApplicationRecord
   has_many :read_counts, dependent: :destroy
   belongs_to :tag
   belongs_to :region
+  has_many :post_facilities, dependent: :destroy
+  has_many :facilities, through: :post_facilities, dependent: :destroy
 
   has_one_attached :image do |attachable|
 
-    # Tinify.from_buffer(attachable).to_buffer
+    Tinify.from_buffer(attachable).to_buffer
 
   end
 

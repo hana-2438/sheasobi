@@ -50,6 +50,12 @@ footer{
   border-bottom:double 4px #fa8072;
 }
 
+.logo img{
+  max-width:230px; /* 画像の最大幅 */
+  margin: auto; /* 画像の左右の余白を同じ幅にする */
+  display: block; /* 画像の下の隙間をなくす */
+}
+
 
 /*登録ボタン等の色をサーモン色に変更-----------------*/
 
@@ -68,8 +74,8 @@ footer{
 
 /*public/homes/top.html-----------------------------*/
 .main-visual{
-  height: 400px;
-  width: 600px;
+  max-height: 400px;
+  max-width: 600px;
   background-image: url("../../assets/images/top.jpg");
   background-position: center;
   background-repeat: no-repeat;
@@ -102,8 +108,10 @@ footer{
 }
 
 
-/*public/members/show.html*/
-
+/*public/post_comments/_comments.html*/
+.trash{
+  color: red;
+}
 
   /*public/posts/show.htmlにも記述あり*/
 .heart_red{
@@ -111,7 +119,7 @@ footer{
 }
 
 .profile-side{
-  padding-top: 80px;
+  padding-top: 30px;
 }
 
 
@@ -122,21 +130,24 @@ footer{
   width: 700px;
 }
 
-/*public/members/edit.html*/
-.confirm-btn{
-  height: 50px;
-  width: 200px;
-}
+
 
 
 /*public/posts/show.html*/
+
+.tag-overlay {
+  height: 200px;
+  width: 100px;
+
+
+}
+
 .tag-name {
-    padding: 10px 15px;
-    margin: 10px 0;
+    padding: 5px;
     color: #232323;
     background: #fffacd;
     border-left: solid 10px #ff8c00;
-    width: 200px;
+    width: 150px;
 }
 .tag-name p {
     margin: 0;

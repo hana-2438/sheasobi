@@ -1,23 +1,23 @@
 <div class="container mt-4">
   <div class="row mt-5 mb-5">
     <div class="col text-center">
-      <h1>本当に退会しますか？</h1>
+      <h3>本当に退会しますか？</h3>
     </div>
   </div>
   <div class="row mt-5 mb-5">
     <div class="col text-center">
-      <h4>
+      <h6>
         退会するとお出かけスポットの投稿など一部のサービスがご利用いただけなくなります。<br>
         再度ご利用いただくには、新規登録のお手続きが必要になります。
-      </h4>
+      </h6>
     </div>
   </div>
-  <div class="row">
-    <div class="col-lg-6 text-center mt-5 mb-5">
-     <%= link_to "退会しない", member_path(@member), class: "btn btn-primary btn-lg confirm-btn" %>
+  <div class="row" style="justify-content:center;">
+    <div class="mr-5">
+     <%= link_to "退会しない", member_path(@member), class: "btn btn-primary" %>
     </div>
-    <div class="col-lg-6 text-center mt-5 mb-5">
-     <%= link_to "退会する", members_withdraw_path(@member), method: :patch, class: "btn btn-danger btn-lg confirm-btn" %>
+    <div>
+     <%= link_to "退会する", members_withdraw_path(@member), method: :patch, class: "btn btn-danger" %>
     </div>
   </div>
 </div>

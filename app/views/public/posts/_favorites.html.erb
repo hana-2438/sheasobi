@@ -2,13 +2,13 @@
   <% if post.favorited_by?(current_member) %>
     <p class="text-right">
       <%= link_to post_favorites_path(post), method: :delete, remote: true do %>
-        <i class="fas fa-heart fa-3x heart_red"></i><%= post.favorites.count %>いいね
+        <i class="fas fa-heart fa-2x heart_red"></i><%= post.favorites.count %>いいね
       <% end %>
     </p>
   <% else %>
     <p class="text-right">
       <%= link_to post_favorites_path(post), method: :post, remote: true do %>
-        <i class="fas fa-heart fa-3x normal_heart"></i><%= post.favorites.count %>いいね
+        <i class="fas fa-heart fa-2x normal_heart"></i><%= post.favorites.count %>いいね
       <% end %>
     </p>
   <% end %>
