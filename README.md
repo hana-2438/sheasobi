@@ -44,26 +44,23 @@
 - いいね（ブックマーク）一覧表示機能
 - フォロー機能（非同期通信）
 - お問い合わせ機能(Action Mailer)
-- 通報機能
+- 通報機能（ActionMailerで通報されたユーザーにメールを送信できるようにしています）
 
 ### 基本機能（管理者側）
 - 会員情報編集機能（論理削除での退会処理）
 - タグ機能（CRUD処理）
 
 ### 今後実装したいもの
-- レスポンシブ対応
-- 管理者側の検索機能
-- DM機能など、コミュニティサイトの要素も取り入れたい
+- 通報機能で通報されたユーザーに管理者側からメールを送れるようにしたい
+- 画像圧縮のAPI導入
+- ドメイン取得、HTTPS化
 
 ## 設計書
-- ER図
-![しぇあそびER図 drawio (2)](https://user-images.githubusercontent.com/121591703/226814150-f0223228-f47f-458e-a8bc-09e96632117f.png)
-- 画面遷移図（会員側）
-![しぇあそび画面遷移図-会員側 drawio](https://user-images.githubusercontent.com/121591703/226814445-0d905071-6bb4-496e-bd51-3299f93961b4.png)
-- 画面遷移図（管理者側）
-![しぇあそび画面遷移図-管理者側 drawio](https://user-images.githubusercontent.com/121591703/226814687-4a8503e2-2b1a-4026-8b1e-7d07ba706569.png)
-- アプリケーション詳細設計
-![アプリケーション詳細設計](https://user-images.githubusercontent.com/121591703/226815620-4d9fa92d-0b90-4728-806b-c611b4b6d334.png)
+- [ER図](https://app.diagrams.net/#G1uO7tofLJ1SxcwdzJUW_r_oqATsKXfxMo)
+- [テーブル設計書](https://docs.google.com/spreadsheets/d/1prkBJ2XOGMMfO4rm8_2quiNzTtHXJ75eAbAPaDW3ygM/edit#gid=1694275998)
+- [画面遷移図](https://app.diagrams.net/?src=about#G13lib6irPyT1CaeK1piZzEAq8fwdJCs9C)
+- [ワイヤーフレーム](https://app.diagrams.net/#G1IkgI8xQfS-GxPjhTIKwKl-WONR2rN-Mq)
+- [アプリケーション詳細設計](https://docs.google.com/spreadsheets/d/1R-PqeMMwks32SA2XalqWpNWCHmHcrTBnGjN2AaPBtkE/edit#gid=1447071290)
 
 ## 開発環境
 - OS：Linux(CentOS)

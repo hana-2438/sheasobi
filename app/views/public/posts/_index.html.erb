@@ -8,17 +8,31 @@
                     <% if current_page?(controller: 'posts', action: 'index' ) %>
                        <%= link_to post_path(post.id) do %>
                           <%= image_tag post.get_image(300,300), class: "bd-placeholder-img card-img-top post_card" %>
+                          <div class="card-img-overlay tag-overlay">
+                            <div class="card-title tag-name small", style="margin: 70px 0px; width: 100px; height: 30px; "><p style="font-size: 10px;"><%= post.tag.name %></p></div>
+                          </div>
                        <% end %>
                     <% else %>
                        <%= link_to post_path(post) do %>
                           <%= image_tag post.get_image(300,300), class: "bd-placeholder-img card-img-top post_card" %>
+                          <div class="card-img-overlay tag-overlay">
+                            <div class="card-title tag-name small", style="margin: 70px 0px; width: 100px; height: 30px; "><p style="font-size: 10px;"><%= post.tag.name %></p></div>
+                          </div>
                        <% end %>
                     <% end %>
                 </div>
 
                 <div class="card-body">
                   <p class="card-title font-weight-bold small"><%= post.title %></p>
-                  <div class="tag-name small", style="width: 100px; height: 30px; "><p style="font-size: 10px;"><%= post.tag.name %></p></div>
+
+                  <div class="small mb-2">
+                    <!--設備の項目があれば表示させる-->
+                    <% if post.facility_ids.present? %>
+                      <% post.facility_ids.each do |facility| %>
+                          <span class="badge bg-primary text-white text-small"><%= Facility.find(facility).name %></span>
+                      <% end %>
+                    <% end %>
+                  </div>
                   <p class="card-subtitle mb-2 text-muted small">場所：　<%= post.region.name%>　<%= post.place%></p>
                   <p class="small">コメント件数：<%= post.post_comments.count %></p>
                   <p class="small">閲覧数：<%= post.read_counts.count %></p>

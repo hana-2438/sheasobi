@@ -11,22 +11,42 @@
           <% end %>
         </h5>
         <%= image_tag @post.get_image(400,400), class: "bd-placeholder-img card-img-top card-image" %>
+        <div class="card-img-overlay tag-overlay">
+           <div class="card-title tag-name" style="margin: 50px 0px;"><p><%= @post.tag.name %></p></div>
+        </div>
         <div class="card-body">
-          <h5 class="card-title font-weight-bold "><%= @post.title %></h5>
-          <div class="tag-name"><p><%= @post.tag.name %></p></div>
-          <h6 class="card-subtitle mb-2 text-muted">場所：　<%= @post.region.name%>　<%= @post.place%></h6>
-          <!--フォームで入力した改行を表示することができる-->
+          <h4 class="card-title font-weight-bold "><%= @post.title %></h4>
+          <div class="small mb-2">
+            <!--設備の項目があれば表示させる-->
+            <% if @post.facility_ids.present? %>
+              <% @post.facility_ids.each do |facility| %>
+                  <span class="badge bg-primary text-white text-small"><%= Facility.find(facility).name %></span>
+              <% end %>
+            <% end %>
+          </div>
+          <h6 class="card-subtitle mb-2 text-muted small">場所：　<%= @post.region.name%>　<%= @post.place%></h6>
+           <!--フォームで入力した改行を表示することができる-->
           <p class="card-text"><%= safe_join(@post.caption.split("\n"),tag(:br)) %></p>
-          <p class="card-text">閲覧数：<%= @post.read_counts.count %></p>
-          <% if member_signed_in? %>
+
+
+
+          <div>
+            <% if @post.recommendation.present? %>
+              <span class="font-weight-bold" style="background:linear-gradient(transparent 60%, #ffb6c1 60%);">おすすめポイント!</span><br>
+              &nbsp;&nbsp;<%= safe_join(@post.recommendation.split("\n"),tag(:br)) %>
+            <% end %>
+          </div>
+
+          <span id="favorite_btn_<%= @post.id%>">
+            <%= render "public/posts/favorites", post: @post %>
+          </span>
+          <p class="card-text text-right">閲覧数：<%= @post.read_counts.count %></p>
+           <% if member_signed_in? %>
             <% if current_member.id == @post.member.id %>
               <%= link_to "編集する", edit_post_path(@post), class: "card-link btn btn-secondary rounded-pill" %>
               <%= link_to "削除する", post_path(@post), method: :delete, data: {confirm: "削除しますか？"}, class: "card-link btn btn-danger rounded-pill" %>
             <% end %>
           <% end %>
-          <span id="favorite_btn_<%= @post.id%>">
-            <%= render "public/posts/favorites", post: @post %>
-          </span>
         </div>
       </div>
     </div>

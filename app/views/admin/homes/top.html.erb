@@ -4,39 +4,41 @@
     <div class="col-md-10 mx-auto">
       <label class="h4 pr-3 pl-3">投稿一覧</label>
 
-      <table class="table table-light table-striped table-hover mt-3 small shadow">
+      <div class="table-responsive-md">
+        <table class="table table-light table-striped table-hover mt-3 small shadow">
 
-        <thead class="thead-light">
-          <tr class="text-center">
-            <th>投稿ID</th>
-            <th>投稿日時</th>
-            <th>ニックネーム</th>
-            <th>画像</th>
-            <th>タイトル</th>
-            <th>場所</th>
-            <th></th>
-            <th>タグ</th>
-            <th>説明文</th>
-          </tr>
-        </thead>
-
-        <tbody class="table-light">
-          <% @posts.each do |post| %>
+          <thead class="thead-light">
             <tr class="text-center">
-              <td><%= post.id %></td>
-              <td><%= post.created_at.strftime('%Y/%m/%d %H:%M') %></td>
-              <td><%= post.member.name%></td>
-              <td> <%= image_tag post.get_image(50,50), class: "bd-placeholder-img card-img-top" %></td>
-              <td><%= post.title %></td>
-              <td><%= post.region.name %></td>
-              <td><%= post.place %></td>
-              <td><%= post.tag.name %></td>
-              <td><%= post.caption.truncate(30) %></td>
+              <th>投稿ID</th>
+              <th>投稿日時</th>
+              <th>ニックネーム</th>
+              <th>画像</th>
+              <th>タイトル</th>
+              <th>場所</th>
+              <th></th>
+              <th>タグ</th>
+              <th>説明文</th>
             </tr>
-          <% end %>
-        </tbody>
+          </thead>
 
-      </table>
+          <tbody class="table-light">
+            <% @posts.each do |post| %>
+              <tr class="text-center">
+                <td><%= post.id %></td>
+                <td><%= post.created_at.strftime('%Y/%m/%d %H:%M') %></td>
+                <td><%= post.member.name%></td>
+                <td> <%= image_tag post.get_image(50,50), class: "bd-placeholder-img card-img-top" %></td>
+                <td><%= post.title %></td>
+                <td><%= post.region.name %></td>
+                <td><%= post.place %></td>
+                <td><%= post.tag.name %></td>
+                <td><%= post.caption.truncate(30) %></td>
+              </tr>
+            <% end %>
+          </tbody>
+
+        </table>
+      </div>
 
       <div>
         <%= paginate(@posts) %>

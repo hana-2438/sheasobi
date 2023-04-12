@@ -72,6 +72,35 @@
           </div>
         </div>
 
+        <div class="form-group mb-3">
+          <div class="row">
+            <div class="col-md-4">
+               <%= f.label :facility_id, '設備' %>
+            </div>
+            <div class="col-md-7">
+               <%= f.collection_check_boxes :facility_ids, Facility.all, :id, :name, {}, { class: 'mb-3', label_options: { class: 'mr-3' } } do |facility| %>
+                  <div class="form-check">
+                    <%= facility.label class: "form-check-label" do %>
+                      <%= facility.check_box class: 'form-check-input' %>
+                      <%= facility.text %>
+                    <% end %>
+                  </div>
+               <% end %>
+            </div>
+          </div>
+        </div>
+
+         <div class="form-group">
+         <div class="row">
+           <div class="col-md-4">
+               <%= f.label :recommendation, 'おすすめポイント' %>
+           </div>
+           <div class="col-md-8">
+               <%= f.text_area :recommendation, rows: "2", placeholder: '例）小さな子供が遊べる遊具がたくさんあります。おむつ交換台があって便利です。',class: "form-control" %>
+           </div>
+         </div>
+        </div>
+
         <div class="form-group">
          <div class="row">
            <div class="col-md-4">

@@ -8,6 +8,7 @@ class Public::PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     if @post.save
+      facilities = @post.facilities.pluck(:name).join(", ")
       flash[:notice] = "投稿が完了しました！"
       redirect_to post_path(@post)
     else
@@ -95,7 +96,7 @@ class Public::PostsController < ApplicationController
 
   def post_params
     # 認証目的でcurrent_member.idを渡している
-    params.require(:post).permit(:tag_id, :region_id, :title, :place, :caption, :image).merge(member_id: current_member.id)
+    params.require(:post).permit(:tag_id, :region_id, :title, :place, :caption, :image, :recommendation, facility_ids: []).merge(member_id: current_member.id)
   end
 
 end
