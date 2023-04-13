@@ -28,8 +28,6 @@
            <!--フォームで入力した改行を表示することができる-->
           <p class="card-text"><%= safe_join(@post.caption.split("\n"),tag(:br)) %></p>
 
-
-
           <div>
             <% if @post.recommendation.present? %>
               <span class="font-weight-bold" style="background:linear-gradient(transparent 60%, #ffb6c1 60%);">おすすめポイント!</span><br>

@@ -107,6 +107,19 @@ footer{
     padding: 0;
 }
 
+/*public/homes/about.heml.erb*/
+.text-big{
+  font-size: 18px;
+}
+.bg-image{
+  padding-bottom: 300px;
+  background-image: url("../../assets/images/about.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: black;
+}
+
 
 /*public/post_comments/_comments.html*/
 .trash{
@@ -138,8 +151,6 @@ footer{
 .tag-overlay {
   height: 200px;
   width: 100px;
-
-
 }
 
 .tag-name {
