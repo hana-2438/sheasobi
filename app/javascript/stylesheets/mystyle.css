@@ -111,13 +111,12 @@ footer{
 .text-big{
   font-size: 18px;
 }
-.bg-image{
+.about{
   padding-bottom: 300px;
   background-image: url("../../assets/images/about.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  color: black;
 }
 
 
