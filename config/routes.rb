@@ -27,6 +27,7 @@ devise_for :members, skip: [:passwords], controllers: {
 
   scope module: :public do
     root to: "homes#top"
+    get '/about' => 'homes#about'
     get 'members/confirm' => 'members#confirm',as:'members_confirm'
     resources :members, only: [:show,:edit,:update,:destroy] do
       resource :relationships, only: [:create, :destroy]

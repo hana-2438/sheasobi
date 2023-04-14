@@ -5,4 +5,7 @@ class Public::HomesController < ApplicationController
     # 新着順に投稿を表示させる
     @posts = Post.all.order(created_at: :desc)
   end
+
+  def about
+  end
 end
