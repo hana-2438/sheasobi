@@ -1,5 +1,5 @@
 <header class="background-color: #f0fff0;">
-  <nav class="navbar navbar-expand-lg  navbar-light justify-content-between", style=" border-bottom: solid; border-width: 3px; border-color: #a9a9a9;">
+  <nav class="navbar navbar-expand-xl  navbar-light justify-content-between", style=" border-bottom: solid; border-width: 3px; border-color: #a9a9a9;">
     <h1 class="logo">
       <a class="navbar-brand" href="/">
         <%= image_tag 'logo.png', style: "width: 80%;" %>
@@ -15,12 +15,12 @@
         <li class="nav-item"><%= link_to "お問い合わせ", inquiries_index_path, class: "nav-link mr-2" %></li>
         <li class="nav-item"><%= link_to "ログアウト", destroy_member_session_path, method: :delete, class: "nav-link mr-2" %></li>
       </ul>
-      <div class="d-none d-lg-block ml-auto mt-2">
+      <div class="d-none d-xl-block ml-auto mt-2">
         <%= render 'public/searches/search' %>
       </div>
     </div>
 
-    <div class="d-block d-lg-none mx-auto mt-2">
+    <div class="d-block d-xl-none mx-auto mt-2">
       <%= render 'public/searches/search' %>
     </div>
 

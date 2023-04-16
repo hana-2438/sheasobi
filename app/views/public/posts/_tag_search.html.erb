@@ -1,6 +1,6 @@
       <span class="text-dark text-center title"><i class="fas fa-tag"></i>タグから探す</span>
-      <ul class="list-unstyled d-flex flex-wrap", style="max-height: 400px; overflow-y: auto;">
+      <ul class="row list-unstyled d-flex flex-wrap", style="max-height: 400px; overflow-y: auto;">
         <% tags.each do |tag| %>
-          <li class="mr-2 mb-2 tag-name", style=" width: 90px; font-size: 10px;"><%= link_to tag.name, posts_path(tag_id: tag.id) %></li>
+          <li class="col-xl-4 col-lg-4 col-md-3 col-sm-4 col-4 mr-2 mb-2 tag-name", style=" width: 90px; font-size: 10px;"><%= link_to tag.name, posts_path(tag_id: tag.id) %></li>
       　<% end %>
       </ul>

@@ -19,19 +19,17 @@
   </div>
 
   <div class="row">
-    <div class="col-lg-1"></div>
-    <div class="col-lg-2 col-8 mx-auto tag-area", style="max-height: 480px;">
+    <div class="col-xxl-3 col-xl-3 col-md-6 col-sm-6 col-12 mx-auto tag-area", style="max-height: 480px;">
       <%= render "tag_search", tags: @tags %>
     </div>
-    <div class="col-md-8 col-10 mx-auto">
-        <div class="row row-cols-1 row-cols-md-3">
+    <div class="col-xxl-8 col-xl-8 col-md-10 col-sm-10 col-10 mx-auto">
+        <div class="row row-cols-1 row-cols-lg-3 row-cols-md-2">
           <%= render "index", posts: @posts %>
         </div>
         <div>
           <%= paginate @posts %>
         </div>
     </div>
-    <div class="col-lg-1"></div>
 
   </div>
 </div>
