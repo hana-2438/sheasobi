@@ -26,7 +26,7 @@ class Public::MembersController < ApplicationController
   end
 
   def confirm
-     @member = current_member.id
+     @member = current_member
   end
 
   def withdraw

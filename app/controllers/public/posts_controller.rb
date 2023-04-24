@@ -32,7 +32,7 @@ class Public::PostsController < ApplicationController
       end
     end
 
-    @member = @post.member.id
+    @member = @post.member
     @post_comment = PostComment.new
   end
 
@@ -60,12 +60,12 @@ class Public::PostsController < ApplicationController
   def index
     @tags = Tag.all
     if params[:tag_id].present?
-      @tag = Tag.find(params[:tag_id])
+      tag = Tag.find(params[:tag_id])
       # modelに退会ユーザーを除外するメソッドを記述している(is_not_deleted)
-      posts = @tag.posts.includes(:favorited_members).is_not_deleted
+      posts = tag.posts.includes(:favorited_members).is_not_deleted
       order_posts = posts.order(created_at: :desc)
       @posts = order_posts.page(params[:page]).per(6)
-      @count = @tag.posts.is_not_deleted.count
+      @count = tag.posts.is_not_deleted.count
     else
       # includesで親子関係にあるfavorited_membersのデータをすべて取得し、有効会員のデータのみ取得する
       posts = Post.includes(:favorited_members).is_not_deleted
@@ -88,8 +88,8 @@ class Public::PostsController < ApplicationController
 
    # current_member以外は編集できないようにするための記述
   def ensure_correct_member
-    @member = Post.find(params[:id]).member_id
-    unless @member == current_member.id
+    @member = Post.find(params[:id]).member
+    unless @member == current_member
       redirect_to member_path(current_member)
     end
   end

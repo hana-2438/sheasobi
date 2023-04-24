@@ -10,9 +10,8 @@ class Post < ApplicationRecord
   has_many :facilities, through: :post_facilities, dependent: :destroy
 
   has_one_attached :image do |attachable|
-
+    # from_bufferメソッドによってattachableに格納された画像データを読み込み圧縮する。to_bufferメソッドで圧縮された画像データをbufferへ一時保存している
     Tinify.from_buffer(attachable).to_buffer
-
   end
 
 
