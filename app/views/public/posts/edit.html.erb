@@ -3,12 +3,12 @@
     <div class="col-lg-12">
       <h4 class="mt-4 mb-4 text-center">おでかけスポットを編集する</h4>
        <% if @post.errors.any? %>
-        <%= @post.errors.count %>件のエラーが発生しました
-          <ul>
-            <% @post.errors.full_messages.each do |message| %>
-              <li><%= message %></li>
-            <% end %>
-          </ul>
+         <%= @post.errors.count %>件のエラーが発生しました
+           <ul>
+             <% @post.errors.full_messages.each do |message| %>
+               <li><%= message %></li>
+             <% end %>
+           </ul>
        <% end %>
     </div>
   </div>
@@ -29,14 +29,14 @@
         </div>
 
         <div class="form-group">
-           <div class="row">
-             <div class="col-md-4">
-                 <%= f.label :image, '画像' %>
-             </div>
-             <div class="col-md-8">
-                 <%= f.file_field :image, accept: "image/*" %>
-             </div>
-           </div>
+          <div class="row">
+            <div class="col-md-4">
+              <%= f.label :image, '画像' %>
+            </div>
+            <div class="col-md-8">
+              <%= f.file_field :image, accept: "image/*" %>
+            </div>
+          </div>
         </div>
 
         <div class="form_group mb-3">
@@ -45,7 +45,7 @@
               <%= f.label :region_id, '都道府県名' %>
             </div>
             <div class="col-md-8">
-               <%= f.collection_select :region_id, Region.all, :id, :name,{prompt: "選択してください"}, class: 'form-control' %>
+              <%= f.collection_select :region_id, Region.all, :id, :name,{prompt: "選択してください"}, class: 'form-control' %>
             </div>
           </div>
         </div>
@@ -78,38 +78,38 @@
                <%= f.label :facility_id, '設備' %>
             </div>
             <div class="col-md-7">
-               <%= f.collection_check_boxes :facility_ids, Facility.all, :id, :name, {}, { class: 'mb-3', label_options: { class: 'mr-3' } } do |facility| %>
-                  <div class="form-check">
-                    <%= facility.label class: "form-check-label" do %>
-                      <%= facility.check_box class: 'form-check-input' %>
-                      <%= facility.text %>
-                    <% end %>
-                  </div>
-               <% end %>
+              <%= f.collection_check_boxes :facility_ids, Facility.all, :id, :name, {}, { class: 'mb-3', label_options: { class: 'mr-3' } } do |facility| %>
+                <div class="form-check">
+                  <%= facility.label class: "form-check-label" do %>
+                    <%= facility.check_box class: 'form-check-input' %>
+                    <%= facility.text %>
+                  <% end %>
+                </div>
+              <% end %>
             </div>
           </div>
         </div>
 
-         <div class="form-group">
-         <div class="row">
-           <div class="col-md-4">
-               <%= f.label :recommendation, 'おすすめポイント' %>
-           </div>
-           <div class="col-md-8">
-               <%= f.text_area :recommendation, rows: "2", placeholder: '例）小さな子供が遊べる遊具がたくさんあります。おむつ交換台があって便利です。',class: "form-control" %>
-           </div>
-         </div>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-md-4">
+              <%= f.label :recommendation, 'おすすめポイント' %>
+            </div>
+            <div class="col-md-8">
+              <%= f.text_area :recommendation, rows: "2", placeholder: '例）小さな子供が遊べる遊具がたくさんあります。おむつ交換台があって便利です。',class: "form-control" %>
+            </div>
+          </div>
         </div>
 
         <div class="form-group">
-         <div class="row">
-           <div class="col-md-4">
-               <%= f.label :caption, '説明文' %>
-           </div>
-           <div class="col-md-8">
-               <%= f.text_area :caption, rows: "5", class: "form-control" %>
-           </div>
-         </div>
+          <div class="row">
+            <div class="col-md-4">
+              <%= f.label :caption, '説明文' %>
+            </div>
+            <div class="col-md-8">
+              <%= f.text_area :caption, rows: "5", class: "form-control" %>
+            </div>
+          </div>
         </div>
 
         <div class="text-center mt-5">

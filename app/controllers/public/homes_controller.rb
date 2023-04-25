@@ -1,4 +1,5 @@
 class Public::HomesController < ApplicationController
+
   def top
     # タグ検索のための記述
     @tags = Tag.all
@@ -8,4 +9,5 @@ class Public::HomesController < ApplicationController
 
   def about
   end
+
 end

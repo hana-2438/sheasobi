@@ -5,22 +5,22 @@
   </div>
   <div class="row mb-4">
     <div class="col-lg-8 col-9 mx-auto text-center">
-        <%= image_tag @member.get_profile_image(200, 200), class: "rounded-circle img-thumbnail border-secondary mt-4" %>
+      <%= image_tag @member.get_profile_image(200, 200), class: "rounded-circle img-thumbnail border-secondary mt-4" %>
       <p class="h2 d-flex font-weight-bold justify-content-center align-items-center"><%= @member.name %></p>
       <p class="d-flex justify-content-center align-items-center">
         <!--自己紹介文が存在すれば表示させる-->
         <% if @member.introduction.present? %>
-         <%= safe_join(@member.introduction.split("\n"),tag(:br)) %>
+          <%= safe_join(@member.introduction.split("\n"),tag(:br)) %>
         <% end %>
       </p>
       <% unless member_signed_in? %>
         <%= link_to "フォローするには会員登録が必要です",new_member_registration_path, class: "btn btn-secondary rounded-pill" %>
       <% else %>
         <% if current_member.id == params[:id].to_i %>
-           <%= link_to "編集する", edit_member_path(@member), class: "btn btn-secondary rounded-pill btn-lg" %>
+          <%= link_to "編集する", edit_member_path(@member), class: "btn btn-secondary rounded-pill btn-lg" %>
         <% else %>
           <div id="follow_btn">
-             <%= render "public/relationships/follow_btn", member: @member %>
+            <%= render "public/relationships/follow_btn", member: @member %>
           </div>
           <div class="mt-3">
             <%= link_to "ユーザーを通報", new_member_report_path(@member), class: "btn btn-danger rounded-pill"  %>
@@ -38,9 +38,9 @@
       </div>
       <div class="col-lg-12 col-12 h4 mb-4">
         フォロワー：
-         <%= link_to member_followers_path(@member) do %>
-           <%= @member.followers.count %>
-         <% end %>
+        <%= link_to member_followers_path(@member) do %>
+          <%= @member.followers.count %>
+        <% end %>
       </div>
       <div class="col-lg-12 col-12 mt-5">
         <% if member_signed_in? && current_member.id == params[:id].to_i %>
@@ -54,15 +54,15 @@
   <!--ユーザーの投稿一覧-->
   <div class="row">
     <div class="col-md-12 col-8 mx-auto">
-        <div class="row row-cols-1 row-cols-md-3">
+      <div class="row row-cols-1 row-cols-md-3">
         <%= render "public/posts/index", posts: @posts %>
-        </div>
+      </div>
     </div>
   </div>
   <div class="row">
-     <div>
-       <%= paginate @posts %>
-     </div>
+    <div>
+      <%= paginate @posts %>
+    </div>
   </div>
- 
+
 </div>

@@ -5,7 +5,6 @@
   color: #6c6b6b;
 }
 
-
 .navbar-toggler{
   border-color: #6c6b6b;
   background-color: #ffffff;
@@ -38,7 +37,6 @@ footer{
   color: #fff;
   text-align: center;
   padding: 30px 0;
-
   position: absolute;/*←絶対位置*/
   bottom: 0; /*下に固定*/
 }
@@ -56,7 +54,6 @@ footer{
   display: block; /* 画像の下の隙間をなくす */
 }
 
-
 /*登録ボタン等の色をサーモン色に変更-----------------*/
 
 .btn-salmon{
@@ -70,7 +67,6 @@ footer{
   background-color: #2e8b57;
   color: white;
 }
-
 
 /*public/homes/top.html-----------------------------*/
 .main-visual{
@@ -88,6 +84,7 @@ footer{
     padding: 0.5em 1em;
     border: solid 3px #fa8072;
 }
+
 .tag-area .title {
     position: absolute;
     display: inline-block;
@@ -102,15 +99,18 @@ footer{
     font-weight: bold;
     border-radius: 5px 5px 0 0;
 }
+
 .tag-area ul {
     margin: 0;
     padding: 0;
 }
 
 /*public/homes/about.heml.erb*/
+
 .text-big{
   font-size: 18px;
 }
+
 .about{
   padding-bottom: 300px;
   background-image: url("../../assets/images/about.jpg");
@@ -119,13 +119,14 @@ footer{
   background-size: cover;
 }
 
-
 /*public/post_comments/_comments.html*/
+
 .trash{
   color: red;
 }
 
   /*public/posts/show.htmlにも記述あり*/
+
 .heart_red{
   color: red;
 }
@@ -134,16 +135,12 @@ footer{
   padding-top: 30px;
 }
 
-
 /*public/members/edit.html*/
 
 .edit_form_group{
   height: 500px;
   width: 700px;
 }
-
-
-
 
 /*public/posts/show.html*/
 
@@ -159,16 +156,11 @@ footer{
     border-left: solid 10px #ff8c00;
     width: 150px;
 }
+
 .tag-name p {
     margin: 0;
     padding: 0;
 }
-
-
-
-/*.card-image{*/
-/*  height: 400px;*/
-/*}*/
 
 .normal_heart{
   color: #c0c0c0;
@@ -176,9 +168,8 @@ footer{
   height: 40px;
 }
 
-
-
 /*application/_tag_search.html.erb----------------*/
+
 .tag_search{
   width: 300px;
   height: 600px;
@@ -186,7 +177,7 @@ footer{
 }
 
 /*admin/sessions/new.html------------------------*/
+
 .login_title{
   text-align: center;
 }
-

@@ -19,18 +19,17 @@ class Public::SessionsController < Devise::SessionsController
     @member = Member.find_by(email: params[:member][:email])
     # memberが存在している場合
     return if !@member
-      # passwordがmemberのpasswordと一致しているか、及びmemberが削除されていないか
-      if @member.valid_password?(params[:member][:password]) && @member.is_deleted == false
-        # memberのpasswordが一致していない場合
-        elsif unless @member.valid_password?(params[:member][:password])
-          flash[:alert] = 'パスワードが違います'
-          redirect_to new_member_session_path
-        end
-      else
-        # memberが削除されている
-        flash[:alert] = '退会済みです。再度新規登録を行なってください。'
-        redirect_to root_path
-      end
+    # passwordがmemberのpasswordと一致しているか、及びmemberが削除されていないか
+    if @member.valid_password?(params[:member][:password]) && @member.is_deleted == false
+      # memberのpasswordが一致していない場合
+    elsif !@member.valid_password?(params[:member][:password])
+      flash[:alert] = 'パスワードが違います'
+      redirect_to new_member_session_path
+    else
+      # memberが削除されている
+      flash[:alert] = '退会済みです。再度新規登録を行なってください。'
+      redirect_to root_path
+    end
   end
 
   # GET /resource/sign_in
@@ -54,9 +53,11 @@ class Public::SessionsController < Devise::SessionsController
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
+  
   def guest_sign_in
     member = Member.guest
     sign_in member
     redirect_to root_path, notice: 'ゲストユーザーでログインしました。'
   end
+  
 end

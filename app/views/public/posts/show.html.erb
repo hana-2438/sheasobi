@@ -2,7 +2,7 @@
   <div class="row">
 
     <div class="col-md-8 mt-4">
-       <%= flash[:notice] %>
+      <%= flash[:notice] %>
       <div class="card bg-light shadow">
         <h5 class="card-header">
           <%= @post.created_at.strftime('%Y/%m/%d')%> | 投稿者：
@@ -12,26 +12,28 @@
         </h5>
         <%= image_tag @post.get_image(400,400), class: "bd-placeholder-img card-img-top card-image" %>
         <div class="card-img-overlay tag-overlay">
-           <div class="card-title tag-name" style="margin: 50px 0px;"><p><%= @post.tag.name %></p></div>
+          <div class="card-title tag-name" style="margin: 50px 0px;">
+            <p><%= @post.tag.name %></p>
+          </div>
         </div>
         <div class="card-body">
           <h4 class="card-title font-weight-bold "><%= @post.title %></h4>
           <div class="small mb-2">
             <!--設備の項目があれば表示させる-->
             <% if @post.facility_ids.present? %>
-              <% @post.facility_ids.each do |facility| %>
-                  <span class="badge bg-primary text-white text-small"><%= Facility.find(facility).name %></span>
-              <% end %>
+            <% @post.facility_ids.each do |facility| %>
+            <span class="badge bg-primary text-white text-small"><%= Facility.find(facility).name %></span>
+            <% end %>
             <% end %>
           </div>
           <h6 class="card-subtitle mb-2 text-muted small">場所：　<%= @post.region.name%>　<%= @post.place%></h6>
-           <!--フォームで入力した改行を表示することができる-->
+          <!--フォームで入力した改行を表示することができる-->
           <p class="card-text"><%= safe_join(@post.caption.split("\n"),tag(:br)) %></p>
 
           <div>
             <% if @post.recommendation.present? %>
-              <span class="font-weight-bold" style="background:linear-gradient(transparent 60%, #ffb6c1 60%);">おすすめポイント!</span><br>
-              &nbsp;&nbsp;<%= safe_join(@post.recommendation.split("\n"),tag(:br)) %>
+            <span class="font-weight-bold" style="background:linear-gradient(transparent 60%, #ffb6c1 60%);">おすすめポイント!</span><br>
+            &nbsp;&nbsp;<%= safe_join(@post.recommendation.split("\n"),tag(:br)) %>
             <% end %>
           </div>
 
@@ -39,11 +41,11 @@
             <%= render "public/posts/favorites", post: @post %>
           </span>
           <p class="card-text text-right">閲覧数：<%= @post.read_counts.count %></p>
-           <% if member_signed_in? %>
-            <% if current_member.id == @post.member.id %>
-              <%= link_to "編集する", edit_post_path(@post), class: "card-link btn btn-secondary rounded-pill" %>
-              <%= link_to "削除する", post_path(@post), method: :delete, data: {confirm: "削除しますか？"}, class: "card-link btn btn-danger rounded-pill" %>
-            <% end %>
+          <% if member_signed_in? %>
+          <% if current_member.id == @post.member.id %>
+          <%= link_to "編集する", edit_post_path(@post), class: "card-link btn btn-secondary rounded-pill" %>
+          <%= link_to "削除する", post_path(@post), method: :delete, data: {confirm: "削除しますか？"}, class: "card-link btn btn-danger rounded-pill" %>
+          <% end %>
           <% end %>
         </div>
       </div>
@@ -51,7 +53,7 @@
 
     <div class="col-md-4 mt-4">
       <div class="row justify-content-center">コメント件数：<%= @post.post_comments.count %></div>
-      <div class="bg-light shadow overflow-auto", style="height: 400px;">
+      <div class="bg-light shadow overflow-auto" , style="height: 400px;">
         <div id="post_comments_area">
           <%= render "public/post_comments/comments", post: @post %>
         </div>

@@ -22,7 +22,6 @@ class Public::PostsController < ApplicationController
     if @post.member.is_deleted
       redirect_to root_path
     end
-
     # その日一日、該当の投稿を閲覧していない場合閲覧数としてカウントする
     if member_signed_in?
       # ReadCountレコードの中に今日の日付のデータ（member_idがcurrent_member.id,で、post_idが現在params[:id]を受け取っている投稿）が存在しないか
@@ -31,7 +30,6 @@ class Public::PostsController < ApplicationController
        current_member.read_counts.create(post_id: @post.id)
       end
     end
-
     @member = @post.member
     @post_comment = PostComment.new
   end
@@ -84,9 +82,10 @@ class Public::PostsController < ApplicationController
       @count = Post.all.is_not_deleted.count
     end
   end
+  
   private
 
-   # current_member以外は編集できないようにするための記述
+  # current_member以外は編集できないようにするための記述
   def ensure_correct_member
     @member = Post.find(params[:id]).member
     unless @member == current_member

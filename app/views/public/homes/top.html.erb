@@ -11,7 +11,7 @@
       </p>
     </div>
     <div class="col-lg-4 col-sm-12 mx-auto tag-area", style="max-height: 450px;">
-     <%= render "public/posts/tag_search", tags: @tags %>
+      <%= render "public/posts/tag_search", tags: @tags %>
     </div>
   </div>
 
@@ -21,41 +21,43 @@
   <div class="row">
     <div class="col-md-12 col-8 mx-auto">
       <div class="row row-cols-1 row-cols-lg-4 row-cols-md-2">
-         <% @posts.first(4).each do |post| %>
-            <div class="col mb-3">
-              <div class="card h-100 shadow">
-
-                <div class="card-header">
-                  <p class="card-header small"><%= post.created_at.strftime('%Y/%m/%d')%><br>投稿者：<%= post.member.name%></p>
-                  <%= link_to post_path(post) do %>
+        <% @posts.first(4).each do |post| %>
+          <div class="col mb-3">
+            <div class="card h-100 shadow">
+          
+              <div class="card-header">
+                <p class="card-header small"><%= post.created_at.strftime('%Y/%m/%d')%><br>投稿者：<%= post.member.name%></p>
+                <%= link_to post_path(post) do %>
                   <%= image_tag post.get_image(200,200), class: "bd-placeholder-img card-img-top post_card" %>
                   <div class="card-img-overlay tag-overlay">
-                    <div class="tag-name small", style="margin: 70px 0px; width: 100px; height: 30px; "><p style="font-size: 10px;"><%= post.tag.name %></p></div>
+                    <div class="tag-name small" , style="margin: 70px 0px; width: 100px; height: 30px; ">
+                      <p style="font-size: 10px;"><%= post.tag.name %></p>
+                    </div>
                   </div>
+                <% end %>
+              </div>
+          
+              <div class="card-body">
+                <p class="card-title font-weight-bold small"><%= post.title %></p>
+                <div class="small mb-2">
+                  <!--設備の項目があれば表示させる-->
+                  <% if post.facility_ids.present? %>
+                  <% post.facility_ids.each do |facility| %>
+                    <span class="badge bg-primary text-white text-small"><%= Facility.find(facility).name %></span>
+                  <% end %>
                   <% end %>
                 </div>
-
-                <div class="card-body">
-                  <p class="card-title font-weight-bold small"><%= post.title %></p>
-                  <div class="small mb-2">
-                    <!--設備の項目があれば表示させる-->
-                    <% if post.facility_ids.present? %>
-                      <% post.facility_ids.each do |facility| %>
-                          <span class="badge bg-primary text-white text-small"><%= Facility.find(facility).name %></span>
-                      <% end %>
-                    <% end %>
-                  </div>
-                  <p class="card-subtitle mb-2 text-muted small">場所：　<%= post.region.name %>　<%= post.place %></p>
-                  <p class="small">コメント件数：<%= post.post_comments.count %></p>
-                  <p class="small">閲覧数：<%= post.read_counts.count %></p>
-                  <%= link_to "詳細を見る", post_path(post), class:"btn btn-outline-info" %>
-                   <span id="favorite_btn_<%= post.id%>">
-                     <%= render "public/posts/favorites", post: post %>
-                   </span>
-                </div>
-
+                <p class="card-subtitle mb-2 text-muted small">場所：　<%= post.region.name %>　<%= post.place %></p>
+                <p class="small">コメント件数：<%= post.post_comments.count %></p>
+                <p class="small">閲覧数：<%= post.read_counts.count %></p>
+                <%= link_to "詳細を見る", post_path(post), class:"btn btn-outline-info" %>
+                <span id="favorite_btn_<%= post.id%>">
+                   <%= render "public/posts/favorites", post: post %>
+                 </span>
               </div>
+
             </div>
+          </div>
          <% end %>
       </div>
     </div>

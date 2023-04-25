@@ -9,40 +9,40 @@
   <div class="row">
     <div class="col-md-12 mx-auto">
       <table class="table bg-white">
-         <tr>
-            <td>通報ID</td>
-            <td><%= @report.id %></td>
-         </tr>
-         <tr>
-           <td>会員名</td>
-           <td>
-             <%= link_to member_path(@report.reported) do %>
-               <%= @report.reported.name %>
-             <% end %>
-           </td>
-         </tr>
-         <tr>
-           <td>通報理由</td>
-           <td><%= @report.reason %></td>
-         </tr>
-         <tr>
-           <td>URL等</td>
-           <td><%= @report.url %></td>
-         </tr>
-         <tr>
-           <td>通報者</td>
-           <td><%= @report.reporter.name %></td>
-         </tr>
-         <tr>
-           <td>対応ステータス</td>
-           <td>
-             <%= @report.report_status_i18n %>
-              <%= form_with model: @report, url: admin_report_path(@report), method: :patch, local: true do |f| %>
-                <%= f.select :report_status, Report.report_statuses.keys.map { |k| [t("enums.report.report_status.#{k}"), k] } %>
-                <%= f.submit "更新する", class:"btn btn-success" %>
-              <% end %>
-           </td>
-         </tr>
+        <tr>
+          <td>通報ID</td>
+          <td><%= @report.id %></td>
+        </tr>
+        <tr>
+          <td>会員名</td>
+          <td>
+            <%= link_to member_path(@report.reported) do %>
+              <%= @report.reported.name %>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <td>通報理由</td>
+          <td><%= @report.reason %></td>
+        </tr>
+        <tr>
+          <td>URL等</td>
+          <td><%= @report.url %></td>
+        </tr>
+        <tr>
+          <td>通報者</td>
+          <td><%= @report.reporter.name %></td>
+        </tr>
+        <tr>
+          <td>対応ステータス</td>
+          <td>
+            <%= @report.report_status_i18n %>
+            <%= form_with model: @report, url: admin_report_path(@report), method: :patch, local: true do |f| %>
+              <%= f.select :report_status, Report.report_statuses.keys.map { |k| [t("enums.report.report_status.#{k}"), k] } %>
+              <%= f.submit "更新する", class:"btn btn-success" %>
+            <% end %>
+          </td>
+        </tr>
       </table>
     </div>
   </div>
