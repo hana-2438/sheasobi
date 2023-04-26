@@ -19,10 +19,10 @@ class Admin::MembersController < ApplicationController
     end
   end
 
-
-private
+  private
 
   def member_params
     params.require(:member).permit(:name, :email, :profile_image, :introduction, :is_deleted)
   end
+
 end

@@ -1,41 +1,38 @@
 <div class="container">
-
   <div class="row">
     <div class="col-lg-12 edit_title">
       <h4 class="mt-4 mb-4 text-center"><%= @member.name %>さんの会員情報編集</h4>
       <% if @member.errors.any? %>
-        <%= @member.errors.count %>件のエラーが発生しました
-          <ul>
-            <% @member.errors.full_messages.each do |message| %>
-              <li><%= message %></li>
-            <% end %>
-          </ul>
+      <%= @member.errors.count %>件のエラーが発生しました
+        <ul>
+          <% @member.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
       <% end %>
     </div>
   </div>
-
   <div class="row">
     <div class="col-md-8 mx-auto">
-       <%= form_with model: @member, url: admin_member_path, method: :patch do |f| %>
-         <%= render "public/members/edit", member: @member, f: f %>
-         <div class="form-group">
-           <div class="row">
-             <div class="col-md-3">
-                 <%= f.label :is_deleted, "会員ステータス" %>
-             </div>
-             <div class="col-md-9">
-                <%= f.radio_button :is_deleted, false %>
-                <%= f.label :is_deleted, "有効" %>
-                <%= f.radio_button :is_deleted, true %>
-                <%= f.label :is_deleted, "退会" %>
-             </div>
-           </div>
-         </div>
-         <div class="text-center mt-5">
-            <%= f.submit "保存する", class:"btn btn-salmon btn-lg" %>
-         </div>
-       <% end %>
+      <%= form_with model: @member, url: admin_member_path, method: :patch do |f| %>
+      <%= render "public/members/edit", member: @member, f: f %>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-md-3">
+              <%= f.label :is_deleted, "会員ステータス" %>
+            </div>
+            <div class="col-md-9">
+              <%= f.radio_button :is_deleted, false %>
+              <%= f.label :is_deleted, "有効" %>
+              <%= f.radio_button :is_deleted, true %>
+              <%= f.label :is_deleted, "退会" %>
+            </div>
+          </div>
+        </div>
+        <div class="text-center mt-5">
+          <%= f.submit "保存する", class:"btn btn-salmon btn-lg" %>
+        </div>
+      <% end %>
     </div>
   </div>
-
 </div>

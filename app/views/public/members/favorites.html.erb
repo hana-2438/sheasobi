@@ -1,15 +1,15 @@
 <div class="container">
-  <h4 class="mt-4 mb-4 text-center"><i class="fas fa-heart heart_red"></i>いいね</h2>
+  <h4 class="mt-4 mb-4 text-center"><i class="fas fa-heart heart_red"></i>いいね</h4>
   <%= flash[:notice] %>
 
   <div class="row">
     <div class="col-md-12 col-8 mx-auto">
-        <div class="row row-cols-1 row-cols-md-3">
-          <%= render "public/posts/index", posts: @favorite_posts %>
-        </div>
-        <div>
-          <%= paginate @favorite_posts %>
-        </div>
+      <div class="row row-cols-1 row-cols-md-3">
+        <%= render "public/posts/index", posts: @favorite_posts %>
+      </div>
+      <div>
+        <%= paginate @favorite_posts %>
+      </div>
     </div>
   </div>
 </div>

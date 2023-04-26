@@ -10,7 +10,6 @@ class InquiriesController < ApplicationController
     # 入力値のチェック（お問い合わせ内容はデータとして保存しない）
     @inquiry = Inquiry.new(params[:inquiry].permit(:name, :email, :message))
     if @inquiry.valid?
-
       render :confirm
     else
       render :index

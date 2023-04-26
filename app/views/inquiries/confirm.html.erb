@@ -1,14 +1,13 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-12">
-       <h4 class="mt-4 mb-4 text-center">お問い合わせ</h4>
+      <h4 class="mt-4 mb-4 text-center">お問い合わせ</h4>
     </div>
   </div>
 
   <div class="row">
     <div class="col-md-7 mx-auto">
       <%= form_with model: @inquiry, url: inquiries_thanks_path, method: :get, local: true do |f| %>
-
         <div class="form_group mb-3">
           <div class="row">
             <div class="col-md-4">
@@ -21,36 +20,32 @@
             </div>
           </div>
         </div>
-
         <div class="form_group mb-3">
           <div class="row">
             <div class="col-md-4">
               <%= f.label :email, 'メールアドレス' %>
             </div>
             <div class="col-md-8">
-               <%= f.hidden_field :email, class: 'form-control' %>
-               <%= @inquiry.email %>
+              <%= f.hidden_field :email, class: 'form-control' %>
+              <%= @inquiry.email %>
             </div>
           </div>
         </div>
-
         <div class="form-group">
           <div class="row">
             <div class="col-md-4">
-                <%= f.label :message, 'お問い合わせ内容' %>
+              <%= f.label :message, 'お問い合わせ内容' %>
             </div>
             <div class="col-md-8">
-                <%= f.hidden_field :message, class: 'form-control' %>
-                <!--simple_format,改行文字を含むテキストをブラウザ上で表示させる-->
-                <%= simple_format(@inquiry.message) %>
+              <%= f.hidden_field :message, class: 'form-control' %>
+              <!--simple_format,改行文字を含むテキストをブラウザ上で表示させる-->
+              <%= simple_format(@inquiry.message) %>
             </div>
           </div>
         </div>
-
         <div class="text-center mt-5">
           <%= f.submit "送信", class:"btn btn-salmon btn-lg" %>
         </div>
-
       <% end %>
     </div>
   </div>

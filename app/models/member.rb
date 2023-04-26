@@ -18,7 +18,7 @@ class Member < ApplicationRecord
   # フォローフォロワー一覧
   has_many :followings, through: :relationships, source: :followed
   has_many :followers, through: :reverse_of_relationships, source: :follower
-  
+
   # 通報機能
   has_many :reports, class_name: "Report", foreign_key: "reporter_id", dependent: :destroy
   has_many :reverse_of_reports, class_name: "Report", foreign_key: "reported_id", dependent: :destroy
@@ -28,7 +28,7 @@ class Member < ApplicationRecord
   validates :name, presence:true
   validates :is_deleted, inclusion: [true, false]
 
-  # ゲストユーザー用メソッド
+  # ゲストユーザーログイン用メソッド
   def self.guest
     find_or_create_by!(email: 'guest@test.com') do |member|
       member.password = SecureRandom.urlsafe_base64
@@ -36,8 +36,12 @@ class Member < ApplicationRecord
     end
   end
 
-  def get_profile_image(width, height)
+  # ゲストユーザーであるかどうかの判定処理
+  def guest?
+   self.name == 'guestmember' && self.email == 'guest@test.com'
+  end
 
+  def get_profile_image(width, height)
     if profile_image.attached?
       profile_image.variant(resize_to_fill: [width, height]).processed
     else
