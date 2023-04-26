@@ -53,11 +53,12 @@ class Public::SessionsController < Devise::SessionsController
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
-  
+
   def guest_sign_in
     member = Member.guest
     sign_in member
-    redirect_to root_path, notice: 'ゲストユーザーでログインしました。'
+    flash[:alert] = 'ゲストユーザーでログインしました。'
+    redirect_to root_path
   end
-  
+
 end
